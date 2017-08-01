@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa rastitulosta</h1>
+
+  <h2>Kilpailija: Make</h2>
+
+  <form>
+    <div class="form-group">
+      <label>Aika</label>
+      <input class="form-control" value="3,90" type="text">
+    </div>
+    <div class="form-group">
+      <label>Osumat</label>
+      <input class="form-control" value="AA AC AA" type="text">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}

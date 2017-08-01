@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa kilpailulistaa</h1>
+
+  <form>
+    <div class="form-group">
+      <label>Päivämäärä</label>
+      <input class="form-control" value="1.8.2017" type="text">
+    </div>
+    <div class="form-group">
+      <label>Paikka</label>
+      <input class="form-control" value="Helsinki" type="text">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}

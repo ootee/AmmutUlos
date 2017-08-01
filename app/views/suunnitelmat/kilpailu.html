@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Kilpailu</h1>
+
+  <p>
+    <a href="#" class="btn btn-success">Lisää rasti</a>
+  </p>
+
+<h2>Yhteistulos</h2>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Kilpailija</th>
+      <th>Pisteet</th>
+      <th>%</th>
+      <th>Rastivoitot</th>
+      <th>Nopeimmat ajat</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Make</td>
+      <td>240</td>
+      <td>100</td>
+      <td>4</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <td>2</td>
+      <td>Jupe</td>
+      <td>203</td>
+      <td>85</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <td>3</td>
+      <td>Pena</td>
+      <td>192</td>
+      <td>78</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+
+</table>
+
+<h2>Rastitulokset</h2>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Rasti</th>
+      <th>Kuvaus</th>
+      <th>Tauluja</th>
+      <th>Voittaja</th>
+      <th>Nopein aika</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>kolme taulua</td>
+      <td>3</td>
+      <td>Make</td>
+      <td>Make</td>
+      <td><a class="btn btn-default btn-sm" href="#">Näytä</a><a class="btn btn-default btn-sm" href="#">Muokkaa</a></td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
