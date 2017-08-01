@@ -19,3 +19,11 @@ Toimintoja:
 - tuloksen poistaminen
 - kilpailijan, tuomarin ja pääkäyttäjän kirjautuminen 
 
+## Linkit sivusuunnitelmiin
+* [Etusivu](http://otanttu.users.cs.helsinki.fi/ammutulos/)
+* [Kilpailulista](http://otanttu.users.cs.helsinki.fi/ammutulos/kilpailulista)
+* [Kilpailu](http://otanttu.users.cs.helsinki.fi/ammutulos/kilpailu)
+* [Rasti](otanttu.users.cs.helsinki.fi/ammutulos/rasti)
+* [Kilpailulistan muokkaus](http://otanttu.users.cs.helsinki.fi/ammutulos/kilpailulista_edit)
+* [Kilpailun muokkaus](http://otanttu.users.cs.helsinki.fi/ammutulos/kilpailu_edit)
+* [Rastin muokkaus](http://otanttu.users.cs.helsinki.fi/ammutulos/rasti_edit)
