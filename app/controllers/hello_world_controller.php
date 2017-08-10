@@ -1,5 +1,5 @@
 <?php
-require 'app/models/kilpailija.php';
+
 class HelloWorldController extends BaseController{
 
   public static function index(){

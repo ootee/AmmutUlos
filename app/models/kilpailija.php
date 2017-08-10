@@ -52,4 +52,15 @@ class Kilpailija extends BaseModel{
 
 		return null;
 	}
+
+	public function save(){
+		$query = DB::connection()->prepare('INSERT INTO Kilpailija (etunimi, sukunimi, kayttajatunnus, salasana, tuomari, superuser) VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :tuomari, :superuser) RETURNING kilpailija_id');
+		
+		$query->execute(array('etunimi' => $this->etunimi, 'sukunimi' => $this->sukunimi, 'kayttajatunnus' => $this->kayttajatunnus, 'salasana' => $this->salasana, 'tuomari' => $this->tuomari, 'superuser' => $this->superuser));
+
+		$row = $query->fetch();
+
+		$this->kilpailija_id = $row['kilpailija_id'];
+
+	}
 }

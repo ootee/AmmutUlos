@@ -4,6 +4,24 @@
     HelloWorldController::index();
   });
 
+  $routes->get('/kilpailija', function(){
+    KilpailijaController::index();
+  });
+
+  $routes->post('/kilpailija', function(){
+    KilpailijaController::store();
+  });
+
+  $routes->get('/kilpailija/add', function(){
+    KilpailijaController::add();
+  });
+
+  $routes->get('/kilpailija/:id', function($id){
+    KilpailijaController::show($id);
+  });
+
+
+
   $routes->get('/kilpailulista', function() {
   	HelloWorldController::kilpailulista();
   });
