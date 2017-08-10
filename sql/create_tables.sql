@@ -2,7 +2,11 @@
 CREATE TABLE Kilpailija (
 	kilpailija_id SERIAL PRIMARY KEY,
 	etunimi TEXT NOT NULL,
-	sukunimi TEXT
+	sukunimi TEXT,
+	kayttajatunnus TEXT NOT NULL,
+	salasana TEXT NOT NULL,
+	tuomari BOOLEAN,
+	superuser BOOLEAN
 );
 
 CREATE TABLE Kilpailu (
