@@ -25,10 +25,9 @@ class Kilpailija extends BaseModel{
 				'superuser' => $row['superuser']
 			));
 
-			return $kilpailijat;
 		}
-
-		return null;
+		
+		return $kilpailijat;
 	}
 
 	public static function find($kilpailija_id){
