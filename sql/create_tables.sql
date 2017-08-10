@@ -31,7 +31,7 @@ CREATE TABLE Tulos (
 	kilpailija INTEGER REFERENCES Kilpailija(kilpailija_id)
 );
 
-CREATE TABLE Kilpailusuoritus (
+CREATE TABLE Osallistuminen (
 	kilpailija INTEGER REFERENCES Kilpailija(kilpailija_id),
 	kilpailu INTEGER REFERENCES Kilpailu(kilpailu_id)
 );
