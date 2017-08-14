@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Kilpailulistaus</h1>
+
+<p>
+  <a href="{{base_path}}/kilpailu/add" class="btn btn-success">Lisää kilpailu</a>
+</p>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Päivämäärä</th>
+      <th>Paikka</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for kilpailu in kilpailut %}
+    <tr>
+      <td><a href="{{base_path}}/kilpailu/{{kilpailu.kilpailu_id}}">{{kilpailu.kilpailu_id}}</td>
+      <td>{{kilpailu.pvm}}</td>
+      <td>{{kilpailu.paikka}}</td>
+      <td><a class "btn btn-default btn-sm" href="{{base_path}}/kilpailu/{{kilpailu.kilpailu_id}}/edit">Muokkaa</a></td>
+    </tr>
+    {% endfor %}
+  </tbody> 
+</table>
+{% endblock %} 

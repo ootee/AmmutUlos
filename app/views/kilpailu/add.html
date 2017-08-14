@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>Lisää kilpailu</h1>
+
+	<form method="post" action="{{base_path}}/kilpailu">
+		<div class="form-group">
+			<label>Päivämärä</label>
+			<input name="pvm" class="form-control" type="date">
+		</div>
+
+		<div class="form-group">
+			<label>Paikka</label>
+			<input name="paikka" class="form-control" type="text">
+		</div>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Lisää</button>
+		</div>
+
+	</form>
+{% endblock %}

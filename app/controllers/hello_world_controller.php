@@ -33,10 +33,10 @@ class HelloWorldController extends BaseController{
 
   public static function sandbox(){
       // Testaa koodiasi täällä
-    $kilpailijat = Kilpailija::all();
-    $kilpailija = Kilpailija::find(1);
+    $kilpailut = Kilpailu::all();
+    $kilpailu = Kilpailu::find(1);
 
-    Kint::dump($kilpailijat);
-    Kint::dump($kilpailija);
+    Kint::dump($kilpailut);
+    Kint::dump($kilpailu);
   }
 }    

@@ -44,7 +44,7 @@ class Kilpailija extends BaseModel{
 				'salasana' => $row['salasana'],
 				'tuomari' => $row['tuomari'],
 				'superuser' => $row['superuser']
-				));
+			));
 
 			return $kilpailija;
 		}
@@ -60,6 +60,5 @@ class Kilpailija extends BaseModel{
 		$row = $query->fetch();
 
 		$this->kilpailija_id = $row['kilpailija_id'];
-
 	}
 }

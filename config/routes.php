@@ -4,6 +4,8 @@
     HelloWorldController::index();
   });
 
+  //Kilpailija
+
   $routes->get('/kilpailija', function(){
     KilpailijaController::index();
   });
@@ -20,26 +22,34 @@
     KilpailijaController::show($id);
   });
 
-
-
-  $routes->get('/kilpailulista', function() {
-  	HelloWorldController::kilpailulista();
-  });
-
-  $routes->get('/kilpailulista_edit', function() {
-  	HelloWorldController::kilpailulista_edit();
-  });
+  //Kilpailu
 
   $routes->get('/kilpailu', function() {
-  	HelloWorldController::kilpailu();
+  	KilpailuController::index();
   });
 
-  $routes->get('/kilpailu_edit', function() {
-  	HelloWorldController::kilpailu_edit();
+  
+  $routes->post('/kilpailu', function() {
+  	KilpailuController::store();
   });
 
-  $routes->get('/rasti', function() {
-  	HelloWorldController::rasti();
+  $routes->get('/kilpailu/add', function() {
+  	KilpailuController::add();
+  });
+
+  $routes->get('/kilpailu/:id', function($id) {
+  	KilpailuController::show($id);
+  });
+
+
+  //Rasti
+
+  $routes->post('/rasti', function(){
+    RastiController::store();
+  });
+
+  $routes->get('/rasti/add', function() {
+  	RastiController::add();
   });
 
   $routes->get('/rasti_edit', function() {

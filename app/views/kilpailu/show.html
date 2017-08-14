@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Kilpailu</h1>
+
+<p>
+  <a href="{{base_path}}/rasti/add" class="btn btn-success">Lisää rasti</a>
+</p>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Rasti #</th>
+      <th>Tauluja</th>
+      <th>Paikka</th>
+      <th>Rasteja</th>
+      <th>Kilpailijoita</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>{{rasti.numero}}</td>
+      <td>{{rasti.taulkm}}</td>
+      <td>x</td>
+      <td>x</td>
+      <td></td>
+    </tr>
+  </tbody> 
+</table>
+{% endblock %} 
