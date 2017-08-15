@@ -33,10 +33,17 @@ class HelloWorldController extends BaseController{
 
   public static function sandbox(){
       // Testaa koodiasi täällä
-    $kilpailut = Kilpailu::all();
-    $kilpailu = Kilpailu::find(1);
+    $kipi = new Kilpailija(array(
+      'etunimi' => '',
+      'sukunimi' => 'Kimmonen',
+      'kayttajatunnus' => 'kimkimmo',
+      'salasana' => 'qwqweqwe',
+      'tuomari' => 'FALSE',
+      'superuser' => 'TRUE'
+      ));
 
-    Kint::dump($kilpailut);
-    Kint::dump($kilpailu);
+    $errors = $kipi->errors();
+
+    Kint::dump($errors);
   }
 }    

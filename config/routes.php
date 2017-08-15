@@ -22,6 +22,14 @@
     KilpailijaController::show($id);
   });
 
+  $routes->get('/kilpailija/:id/edit', function($id){
+    KilpailijaController::edit($id);
+  });
+
+  $routes->post('/kilpailija/:id/edit', function($id){
+    KilpailijaController::update($id);
+  });
+
   //Kilpailu
 
   $routes->get('/kilpailu', function() {

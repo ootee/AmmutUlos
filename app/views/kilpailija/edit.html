@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>Muokkaa kilpailijan tietoja</h1>
+
+	<form method="post" action="{{base_path}}/kilpailija/{{attributes.kilpailija_id}}/edit">
+		<div class="form-group">
+			<label>Etunimi</label>
+			<input name="etunimi" class="form-control" type="text" value="{{attributes.etunimi}}">
+		</div>
+
+		<div class="form-group">
+			<label>Sukunimi</label>
+			<input name="sukunimi" class="form-control" type="text" value="{{əttributes.sukunimi}}">
+		</div>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Päivitä</button>
+		</div>
+
+	</form>
+{% endblock %}

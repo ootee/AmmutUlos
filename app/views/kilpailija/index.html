@@ -12,9 +12,6 @@
       <th>id</th>
       <th>Etunimi</th>
       <th>Sukunimi</th>
-      <th>Käyttäjätunnus</th>
-      <th>Tuomaristatus</th>
-      <th>Pääkäyttäjästatus</th>
       <th></th>
     </tr>
   </thead>
@@ -25,9 +22,6 @@
       <td><a href="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}">{{kilpailija.kilpailija_id}}</td>
       <td>{{kilpailija.etunimi}}</td>
       <td>{{kilpailija.sukunimi}}</td>
-      <td>{{kilpailija.kayttajatunnus}}</td>
-      <td>{{kilpailija.tuomari}}</td>
-      <td>{{kilpailija.superuser}}</td>
       <td><a class "btn btn-default btn-sm" href="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}/edit">Muokkaa</a></td>
     </tr>
     {% endfor %}
