@@ -2,7 +2,7 @@
 
 class Kilpailija extends BaseModel{
 
-	public $kilpailija_id, $etunimi, $sukunimi, $kayttajatunnus, $salasana, $tuomari, $superuser;
+	public $kilpailija_id, $etunimi, $sukunimi, $kayttajatunnus, $salasana;
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
@@ -19,7 +19,9 @@ class Kilpailija extends BaseModel{
 			$kilpailijat[] = new Kilpailija(array(
 				'kilpailija_id' => $row['kilpailija_id'],
 				'etunimi' => $row['etunimi'],
-				'sukunimi' => $row['sukunimi']
+				'sukunimi' => $row['sukunimi'],
+				'kayttajatunnus' => $row['kayttajatunnus'],
+				'salasana' => $row['salasana']
 			));
 
 		}
@@ -28,7 +30,7 @@ class Kilpailija extends BaseModel{
 	}
 
 	public static function find($kilpailija_id){
-		$query = DB::connection()->prepare('SELECT * FROM Kilpailija WHERE kilpailija_id = :kilpailija_id LIMIT 1');
+		$query = DB::connection()->prepare('SELECT * FROM Kilpailija WHERE kilpailija_id = :kilpailija_id');
 		$query->execute(array('kilpailija_id' => $kilpailija_id));
 		$row = $query->fetch();
 
@@ -36,7 +38,9 @@ class Kilpailija extends BaseModel{
 			$kilpailija = new Kilpailija(array(
 				'kilpailija_id' => $row['kilpailija_id'],
 				'etunimi' => $row['etunimi'],
-				'sukunimi' => $row['sukunimi']
+				'sukunimi' => $row['sukunimi'],
+				'kayttajatunnus' => $row['kayttajatunnus'],
+				'salasana' => $row['salasana']
 			));
 
 			return $kilpailija;
@@ -47,13 +51,15 @@ class Kilpailija extends BaseModel{
 
 	public function save(){
 		$query = DB::connection()->prepare('INSERT INTO Kilpailija 
-			(etunimi, sukunimi) 
+			(etunimi, sukunimi, kayttajatunnus, salasana) 
 			VALUES 
-			(:etunimi, :sukunimi) 
+			(:etunimi, :sukunimi, :kayttajatunnus, :salasana) 
 			RETURNING kilpailija_id');
 		
 		$query->bindValue(':etunimi', $this->etunimi, PDO::PARAM_STR);
 		$query->bindValue(':sukunimi', $this->sukunimi, PDO::PARAM_STR);
+		$query->bindValue(':kayttajatunnus', $this->kayttajatunnus, PDO::PARAM_STR);
+		$query->bindValue(':salasana', $this->salasana, PDO::PARAM_STR);
 
 		$query->execute();
 
@@ -65,22 +71,22 @@ class Kilpailija extends BaseModel{
 	public function update($kilpailija_id){
 		$query = DB::connection()->prepare('UPDATE Kilpailija SET 
 			etunimi = :etunimi, 
-			sukunimi = :sukunimi, 
-			kayttajatunnus = :kayttajatunnus, 
-			salasana = :salasana 
-			-- tuomari = :tuomari , 
-			-- superuser = :superuser) 
+			sukunimi = :sukunimi,
+			kayttajatunnus = :kayttajatunnus,
+			salasana = :salasana
 			WHERE kilpailija_id = :kilpailija_id');
 
 		$query->bindValue(':kilpailija_id', $this->kilpailija_id, PDO::PARAM_STR);
 		$query->bindValue(':etunimi', $this->etunimi, PDO::PARAM_STR);
 		$query->bindValue(':sukunimi', $this->sukunimi, PDO::PARAM_STR);
+		$query->bindValue(':kayttajatunnus', $this->kayttajatunnus, PDO::PARAM_STR);
+		$query->bindValue(':salasana', $this->salasana, PDO::PARAM_STR);
 		
 		$query->execute();
 	}
 
-	public function delete($kilpailija_id){
-		$query = DB::connection()->prepare('DELETE FROM Kilpailija WHERE :kilpailija_id');
+	public function delete(){
+		$query = DB::connection()->prepare('DELETE FROM Kilpailija WHERE kilpailija_id = :kilpailija_id');
 
 		$query->execute(array('kilpailija_id' => $this->kilpailija_id));
 	}

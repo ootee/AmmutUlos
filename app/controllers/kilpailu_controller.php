@@ -28,8 +28,8 @@ class KilpailuController extends BaseController{
 
 	public static function show($kilpailu_id){
 
-		$kilpailut = Rasti::all();
+		$rastit = Rasti::haeKilpailunRastit($kilpailu_id);
 
-		View::make('kilpailu/show.html', array('kilpailut' => $kilpailut));
+		View::make('kilpailu/show.html', array('rastit' => $rastit));
 	}
 }

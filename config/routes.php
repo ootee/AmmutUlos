@@ -1,7 +1,15 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    EtusivuController::index();
+  });
+
+  $routes->get('/login', function(){
+    EtusivuController::login();
+  });
+
+  $routes->post('/login', function(){
+    EtusivuController::handle_login();
   });
 
   //Kilpailija
@@ -30,6 +38,10 @@
     KilpailijaController::update($id);
   });
 
+  $routes->post('/kilpailija/:id/delete', function($id){
+    KilpailijaController::delete($id);
+  });
+
   //Kilpailu
 
   $routes->get('/kilpailu', function() {
@@ -52,6 +64,10 @@
 
   //Rasti
 
+  $routes->get('/rasti', function(){
+    RastiController::index();
+  });
+
   $routes->post('/rasti', function(){
     RastiController::store();
   });
@@ -65,7 +81,7 @@
   });
 
   $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+    EtusivuController::sandbox();
   });
 
 

@@ -2,7 +2,9 @@
 CREATE TABLE Kilpailija (
 	kilpailija_id SERIAL PRIMARY KEY,
 	etunimi TEXT NOT NULL,
-	sukunimi TEXT NOT NULL
+	sukunimi TEXT NOT NULL,
+	kayttajatunnus TEXT NOT NULL,
+	salasana TEXT NOT NULL
 );
 
 CREATE TABLE Kilpailu (

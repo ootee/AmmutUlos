@@ -1,29 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Rasti</h1>
+<h1>Rastilistaus</h1>
 
 <p>
-  <a href="{{base_path}}/tulos/add" class="btn btn-success">Lisää tulos</a>
+  <a href="{{base_path}}/rasti/add" class="btn btn-success">Lisää rasti</a>
 </p>
 
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
+      <th>Rasti #</th>
+      <th>Kuvaus</th>
+      <th>Tauluja</th>
+      <th>Kilpailun id</th>
       <th></th>
-      <th>Sukunimi</th>
-      <th>Aika</th>
-      <th>Pisteet</th>
     </tr>
   </thead>
 
   <tbody>
-    {% for kilpailija in kilpailijat %}
+    {% for rasti in rastit %}
     <tr>
-      <td>{{tulos.kilpailija}}</td>
-      <td>{{kilpailija.sukunimi}}</td>
-      <td>{{tulos.aika}}</td>
-      <td>{{tulos.pisteet}}</td>
-      <td><a class "btn btn-default btn-sm" href="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}/edit">Muokkaa</a></td>
+      <td>{{rasti.rastinro}}</td>
+      <td>{{rasti.kuvaus}}</td>
+      <td>{{rasti.taululkm}}</td>
+      <td>{{rasti.kilpailu}}</td>
+      <td><a class "btn btn-default btn-sm" href="{{base_path}}/rasti/{{rasti.rasti_id}}/edit">Muokkaa</a></td>
     </tr>
     {% endfor %}
   </tbody> 

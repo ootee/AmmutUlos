@@ -3,9 +3,9 @@
 class RastiController extends BaseController{
 	public static function index(){
 
-		$rasti = Rasti::find($id);
+		$rastit = Rasti::all();
 
-		View::make('rasti/index.html', array('rasti' => $rasti));
+		View::make('rasti/index.html', array('rastit' => $rastit));
 	}	
 
 	public static function store(){

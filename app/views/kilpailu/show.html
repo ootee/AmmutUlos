@@ -11,20 +11,16 @@
     <tr>
       <th>Rasti #</th>
       <th>Tauluja</th>
-      <th>Paikka</th>
-      <th>Rasteja</th>
-      <th>Kilpailijoita</th>
     </tr>
   </thead>
 
   <tbody>
+    {% for rasti in rastit %}
     <tr>
       <td>{{rasti.numero}}</td>
       <td>{{rasti.taulkm}}</td>
-      <td>x</td>
-      <td>x</td>
-      <td></td>
     </tr>
+    {% endfor %}
   </tbody> 
 </table>
 {% endblock %} 

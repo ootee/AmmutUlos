@@ -8,10 +8,10 @@ class Rasti extends BaseModel{
 	}
 
 	public static function all(){
-		$query = DB::connection()->prepare('SELECT * FROM Rasti');
+		$query = DB::connection()->prepare('SELECT * FROM Rasti ORDER BY rasti_id ASC');
 		$query->execute();
 		$rows = $query->fetchAll();
-		$kilpailut = array();
+		$rastit = array();
 
 		foreach ($rows as $row) {
 			$rastit[] = new Rasti(array(
@@ -23,30 +23,26 @@ class Rasti extends BaseModel{
 				));
 		}
 
-		return $kilpailut;
+		return $rastit;
 	}
 
-	// public static function haeKilpailu($id){
+	// public static function haeKilpailunRastit($id){
 	// 	$query = DB::connection()->prepare('SELECT * FROM Rasti WHERE kilpailu = :id');
 	// 	$query->execute(array('id' => $id));
 	// 	$rows = $query->fetchAll();
 	// 	$rastit = array();
 
-	// 	if ($rastit) {
-
-	// 		foreach ($rows as $row{
-	// 			$rastit[] = new Rasti(array(
-	// 				'rasti_id' => $row['rasti_id'],
-	// 				'rastinro' => $row['rastinro'],
-	// 				'kuvaus' => $row['kuvaus'],
-	// 				'taululkm' => $row['taululkm'],
-	// 				'kilpailu' => $row['kilpailu']
-	// 				));
-	// 		}
-
-	// 		return $rastit;
+	// 	foreach ($rows as $row{
+	// 		$rastit[] = new Rasti(array(
+	// 			'rasti_id' => $row['rasti_id'],
+	// 			'rastinro' => $row['rastinro'],
+	// 			'kuvaus' => $row['kuvaus'],
+	// 			'taululkm' => $row['taululkm'],
+	// 			'kilpailu' => $row['kilpailu']
+	// 			));
 	// 	}
-	// 	return null;
+		
+	// 	return $rastit;
 	// }
 
 	public static function find($rasti_id){
@@ -71,7 +67,7 @@ class Rasti extends BaseModel{
 
 	public function save(){
 		$query = DB::connection()->prepare('INSERT INTO Rasti (rastinro, kuvaus, taululkm, kilpailu) VALUES (:rastinro, :kuvaus, :taululkm, :kilpailu) RETURNING rasti_id');
-		
+
 		$query->execute(array('rastinro' => $this->rastinro, 'kuvaus' => $this->kuvaus, 'taululkm' => $this->taululkm, 'kilpailu' => $this->kilpailu));
 
 		$row = $query->fetch();

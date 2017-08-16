@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% import "macros/forms.html" as forms %}
+
 <h1>Kilpailija {{kilpailija.etunimi}} {{kilpailija.sukunimi}}</h1>
+
+<p>
+{{forms.edit_button("#{base_path}/kilpailija/#{kilpailija.kilpailija_id}/edit")}}
+{{forms.delete_button("#{base_path}/kilpailija/#{kilpailija.kilpailija_id}/delete")}}
+</p>
 
 <table class="table table-striped table-bordered">
   <thead>
@@ -8,6 +16,7 @@
       <th>id</th>
       <th>Etunimi</th>
       <th>Sukunimi</th>
+      <th>Käyttäjätunnus</th>
     </tr>
   </thead>
 
@@ -16,9 +25,11 @@
       <td>{{kilpailija.kilpailija_id}}</td>
       <td>{{kilpailija.etunimi}}</td>
       <td>{{kilpailija.sukunimi}}</td>
+      <td>{{kilpailija.kayttajatunnus}}</td>
     </tr>
   </tbody> 
 </table>
 
 <a class "btn btn-default btn-sm" href="{{base_path}}/kilpailija">Takaisin listaukseen</a>
+
 {% endblock %} 
