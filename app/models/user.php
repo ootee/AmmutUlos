@@ -11,15 +11,15 @@ class User extends BaseModel{
 		$query = DB::connection()->prepare('SELECT * FROM Kilpailija WHERE kayttajatunnus = :kayttajatunnus AND salasana = :salasana LIMIT 1');
 		$query->execute(array('kayttajatunnus' => $kayttajatunnus, 'salasana' => $salasana));
 		$row = $query->fetch();
+		
 		if($row){
-			$user = new User(array(
+			return new User(array(
+				'id' => $row['kilpailija_id'],
 				'kayttajatunnus' => $row['kayttajatunnus'],
 				'salasana' => $row['salasana'],
 				'etunimi' => $row['etunimi'],
 				'sukunimi' => $row['sukunimi']
 			));
-
-			return $user;
 
 		}else{
 			return null;
