@@ -28,12 +28,9 @@ class EtusivuController extends BaseController{
   public static function sandbox(){
       // Testaa koodiasi täällä
     $kipi = new Kilpailija(array(
-      'etunimi' => '',
-      'sukunimi' => 'Kimmonen',
+      'sukunimi' => '',
       'kayttajatunnus' => 'kimkimmo',
       'salasana' => 'qwqweqwe',
-      'tuomari' => 'FALSE',
-      'superuser' => 'TRUE'
       ));
 
     $errors = $kipi->errors();

@@ -15,39 +15,41 @@ class BaseModel{
     }
   }
 
-  // public function validate_required($string){
-  //   $errors = array();
-  //   if ($string == '' || $string == null){
-  //     $errors[] = 'Syöte ei saa olla tyhjä!';
-  //   }
+  public function validate_required($string, $name){
+    $error = null;
 
-  //   return $errors;
-  // }
+    if (strlen($string) == 0 || $string == null){
+      $error = $name . ' ei saa olla tyhjä!';
+    }
 
-  // public function validate_numeric($string){
-  //   $errors = array();
-  //   if(!is_numeric($string)){
-  //     $errors[] = 'Syötteen täytyy olla luku!';
-  //   }
+    return $error;
+  }
 
-  //   return $errors;
-  // }
+  public function validate_numeric($string, $name){
+    $errors = null;
+
+    if(!is_numeric($string)){
+      $error = $name . ' täytyy olla luku!';
+    }
+
+    return $error;
+  }
 
   // public function validate_date(){
   //   //todo
   // }
 
-  // public function errors(){
-  //     // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
-  //   $errors = array();
+  public function errors(){
+      // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
+    $errors = array();
 
-  //   foreach($this->validators as $validator){
-  //       // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
-  //     $this->{$validator}();
-  //     $errors = array_merge($errors, $validator);
-  //   }
+    foreach($this->validators as $validator){
+        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+      $errors = array_merge($errors, $this->{$validator}());
+    }
 
-  //   return $errors;
-  // }
+    return array_filter($errors);
+  }
 
 }
+

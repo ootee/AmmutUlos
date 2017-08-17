@@ -6,7 +6,7 @@ class Kilpailija extends BaseModel{
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		//$this->validators = array('validate_required');
+		$this->validators = array('validate_pakollinen');
 	}
 
 	public static function all(){
@@ -89,5 +89,15 @@ class Kilpailija extends BaseModel{
 		$query = DB::connection()->prepare('DELETE FROM Kilpailija WHERE kilpailija_id = :kilpailija_id');
 
 		$query->execute(array('kilpailija_id' => $this->kilpailija_id));
+	}
+
+	public function validate_pakollinen(){
+		$errors = array();
+		$errors[] = parent::validate_required($this->etunimi, 'Etunimi');
+		$errors[] = parent::validate_required($this->sukunimi, 'Sukunimi');
+		$errors[] = parent::validate_required($this->kayttajatunnus, 'Kayttajatunnus');
+		$errors[] = parent::validate_required($this->salasana, 'Salasana');
+
+		return $errors;
 	}
 }

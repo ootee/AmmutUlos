@@ -10,16 +10,22 @@ class KilpailijaController extends BaseController{
 
 	public static function store(){
 		$params = $_POST;
-		$kilpailija = new Kilpailija(array(
+		$attributes = array(
 			'etunimi' => $params['etunimi'],
 			'sukunimi' => $params['sukunimi'],
 			'kayttajatunnus' => $params['kayttajatunnus'],
 			'salasana' => $params['salasana']
-		));
+		);
 
-		$kilpailija->save();
+		$kilpailija = new Kilpailija($attributes);
+		$errors = $kilpailija->errors();
 
-		Redirect::to('/kilpailija/' . $kilpailija->kilpailija_id, array('message' => 'Kilpailija on lisätty listaukseen!'));
+		if (count($errors) == 0){
+			$kilpailija->save();
+			Redirect::to('/kilpailija/' . $kilpailija->kilpailija_id, array('message' => 'Kilpailija on lisätty listaukseen!'));	
+		}else{
+			View::make('kilpailija/add.html', array('errors' => $errors, 'attributes' => $attributes));
+		}
 	}
 
 	public static function add(){
