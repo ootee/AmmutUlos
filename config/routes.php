@@ -5,11 +5,11 @@
   });
 
   $routes->get('/login', function(){
-    EtusivuController::login();
+    UserController::login();
   });
 
   $routes->post('/login', function(){
-    EtusivuController::handle_login();
+    UserController::handle_login();
   });
 
   //Kilpailija

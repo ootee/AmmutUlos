@@ -2,25 +2,25 @@
 {% block content %}
 	<h1>Muokkaa kilpailijan tietoja</h1>
 
-	<form method="post" action="{{base_path}}/kilpailija/{{attributes.kilpailija_id}}/edit">
+	<form method="post" action="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}/edit">
 		<div class="form-group">
 			<label>Etunimi</label>
-			<input name="etunimi" class="form-control" type="text" value="{{attributes.etunimi}}">
+			<input name="etunimi" class="form-control" type="text" value="{{kilpailija.etunimi}}">
 		</div>
 
 		<div class="form-group">
 			<label>Sukunimi</label>
-			<input name="sukunimi" class="form-control" type="text" value="{{attributes.sukunimi}}">
+			<input name="sukunimi" class="form-control" type="text" value="{{kilpailija.sukunimi}}">
 		</div>
 
 		<div class="form-group">
 			<label>Käyttäjätunnus</label>
-			<input name="kayttajatunnus" class="form-control" type="text" value="{{attributes.kayttajatunnus}}">
+			<input name="kayttajatunnus" class="form-control" type="text" value="{{kilpailija.kayttajatunnus}}">
 		</div>
 
 		<div class="form-group">
 			<label>Salasana</label>
-			<input name="salasana" class="form-control" type="text" value="{{attributes.salasana}}">
+			<input name="salasana" class="form-control" type="text" value="{{kilpailija.salasana}}">
 		</div>
 
 		<div class="form-group">

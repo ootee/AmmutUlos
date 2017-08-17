@@ -1,7 +1,7 @@
 <?php
 
 class User extends BaseModel{
-	public $kayttajatunnus, $salasana, $etunimi, $sukunimi;
+	public $id, $kayttajatunnus, $salasana, $etunimi, $sukunimi;
 
 	function __construct($attributes){
 		parent::__construct($attributes);
@@ -18,8 +18,31 @@ class User extends BaseModel{
 				'etunimi' => $row['etunimi'],
 				'sukunimi' => $row['sukunimi']
 			));
+
+			return $user;
+
 		}else{
 			return null;
 		}
+	}
+
+	public static function find($id){
+		$query = DB::connection()->prepare('SELECT * FROM Kilpailija WHERE kilpailija_id = :id');
+		$query->execute(array('id' => $id));
+		$row = $query->fetch();
+
+		if ($row){
+			$user = new User(array(
+				'id' => $row['kilpailija_id'],
+				'etunimi' => $row['etunimi'],
+				'sukunimi' => $row['sukunimi'],
+				'kayttajatunnus' => $row['kayttajatunnus'],
+				'salasana' => $row['salasana']
+			));
+
+			return $user;
+		}
+
+		return null;
 	}
 }

@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% import "macros/forms.html" as forms %}
+
 <h1>Kilpailijalistaus</h1>
 
 <p>
-  <a href="{{base_path}}/kilpailija/add" class="btn btn-success">Lisää kilpailija</a>
+{{forms.add_button("#{base_path}/kilpailija/add", "Lisää kilpailija")}}
 </p>
 
 <table class="table table-striped table-bordered">

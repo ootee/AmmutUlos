@@ -5,13 +5,13 @@
 {% endmacro %}
 
 {% macro edit_button(action, text) %}
-<form method="post" action="{{action}}" style="display: inline-block;">
+<form method="get" action="{{action}}" style="display: inline-block;">
 	<button type="submit" class="btn btn-primary">{{text|default('Muokkaa')}}</button>
 </form>
 {% endmacro %}
 
 {% macro add_button(action, text) %}
-<form method="post" action="{{action}}" style="display: inline-block;">
+<form method="get" action="{{action}}" style="display: inline;">
 	<button type="submit" class="btn btn-success">{{text|default('Lisää')}}</button>
 </form>
 {% endmacro %}
