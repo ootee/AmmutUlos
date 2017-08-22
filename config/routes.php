@@ -76,12 +76,20 @@
     RastiController::store();
   });
 
+  $routes->get('/rasti/:id', function($id){
+    RastiController::show($id);
+  });
+
   $routes->get('/rasti/add', function() {
   	RastiController::add();
   });
 
-  $routes->get('/rasti_edit', function() {
-  	HelloWorldController::rasti_edit();
+  $routes->get('/rasti/:id/edit', function($id) {
+    RastiController::edit($id);
+  });
+
+  $routes->post('/rasti/:id/edit', function($id) {
+    RastiController::update($id);
   });
 
   $routes->get('/hiekkalaatikko', function() {

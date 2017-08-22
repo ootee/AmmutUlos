@@ -34,4 +34,36 @@ class RastiController extends BaseController{
 
 		View::make('rasti/show.html', array('rasti' => $rasti));
 	}
+
+	public static function edit($id){
+		self::check_logged_in();
+
+		$rasti = Rasti::find($id);
+		View::make('rasti/edit.html', array('attributes' => $rasti));
+	}
+
+	public static function update($id){
+		self::check_logged_in();
+
+		$params = $_POST;
+
+		$attributes = array(
+			'rasti_id' => $id,
+			'rastinro' => $params['rastinro'],
+			'kuvaus' => $params['kuvaus'],
+			'taululkm' => $params['taululkm'],
+			);
+
+		$rasti = new Rasti($attributes);
+		$errors = $rasti->errors();
+
+		if(count($errors) == 0){
+			$rasti->update($id);
+
+			Redirect::to('/rasti/' . $rasti->rasti_id, array('message' => 'Rastin tiedot on päivitetty!'));
+		}else{
+			View::make('rasti/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+		}
+
+	}
 }

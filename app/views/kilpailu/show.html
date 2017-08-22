@@ -11,14 +11,20 @@
     <tr>
       <th>Rasti #</th>
       <th>Tauluja</th>
+      <th>Nopein aika</th>
+      <th>Voittaja</th>
+      <th></th>
     </tr>
   </thead>
-
+ 
   <tbody>
     {% for rasti in rastit %}
     <tr>
-      <td>{{rasti.numero}}</td>
-      <td>{{rasti.taulkm}}</td>
+      <td>{{rasti.rastinro}}</td>
+      <td>{{rasti.taululkm}}</td>
+      <td></td>
+      <td></td>
+      <td><a class "btn btn-default btn-sm" href="{{base_path}}/rasti/{{rasti.rasti_id}}/edit">Muokkaa</a></td>
     </tr>
     {% endfor %}
   </tbody> 

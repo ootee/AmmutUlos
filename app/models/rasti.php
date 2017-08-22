@@ -5,6 +5,7 @@ class Rasti extends BaseModel{
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
+		$this->validators = array('validate_pakollinen');
 	}
 
 	public static function all(){
@@ -26,24 +27,24 @@ class Rasti extends BaseModel{
 		return $rastit;
 	}
 
-	// public static function haeKilpailunRastit($id){
-	// 	$query = DB::connection()->prepare('SELECT * FROM Rasti WHERE kilpailu = :id');
-	// 	$query->execute(array('id' => $id));
-	// 	$rows = $query->fetchAll();
-	// 	$rastit = array();
+	public static function haeKilpailunRastit($id){
+		$query = DB::connection()->prepare('SELECT * FROM Rasti WHERE kilpailu = :id');
+		$query->execute(array('id' => $id));
+		$rows = $query->fetchAll();
+		$rastit = array();
 
-	// 	foreach ($rows as $row{
-	// 		$rastit[] = new Rasti(array(
-	// 			'rasti_id' => $row['rasti_id'],
-	// 			'rastinro' => $row['rastinro'],
-	// 			'kuvaus' => $row['kuvaus'],
-	// 			'taululkm' => $row['taululkm'],
-	// 			'kilpailu' => $row['kilpailu']
-	// 			));
-	// 	}
+		foreach ($rows as $row) {
+			$rastit[] = new Rasti(array(
+				'rasti_id' => $row['rasti_id'],
+				'rastinro' => $row['rastinro'],
+				'kuvaus' => $row['kuvaus'],
+				'taululkm' => $row['taululkm'],
+				'kilpailu' => $row['kilpailu']
+				));
+		}
 		
-	// 	return $rastit;
-	// }
+		return $rastit;
+	}
 
 	public static function find($rasti_id){
 		$query = DB::connection()->prepare('SELECT * FROM Rasti WHERE rasti_id = :rasti_id LIMIT 1');
@@ -73,5 +74,29 @@ class Rasti extends BaseModel{
 		$row = $query->fetch();
 
 		$this->rasti_id = $row['rasti_id'];
+	}
+
+	public function update($rasti_id){
+		$query = DB::connection()->prepare('UPDATE Rasti SET 
+			rastinro = :rastinro, 
+			kuvaus = :kuvaus,
+			taululkm = :taululkm
+			WHERE rasti_id = :rasti_id');
+
+		$query->bindValue(':rasti_id', $this->rasti_id, PDO::PARAM_STR);
+		$query->bindValue(':rastinro', $this->rastinro, PDO::PARAM_STR);
+		$query->bindValue(':kuvaus', $this->kuvaus, PDO::PARAM_STR);
+		$query->bindValue(':taululkm', $this->taululkm, PDO::PARAM_STR);
+		
+		$query->execute();
+	}
+
+	public function validate_pakollinen(){
+		$errors = array();
+		$errors[] = parent::validate_required($this->rastinro, 'Rastin numero');
+		$errors[] = parent::validate_required($this->kuvaus, 'Kuvaus');
+		$errors[] = parent::validate_required($this->taululkm, 'Taulujen lukumäärä');
+
+		return $errors;
 	}
 }
