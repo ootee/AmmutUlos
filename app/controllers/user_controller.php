@@ -12,11 +12,17 @@ class UserController extends BaseController{
 		$user = User::authenticate($params['kayttajatunnus'], $params['salasana']);
 
 		if (!$user){
-			View::make('home.html', array('error' => 'Väärä kättäjätunnus tai salasana', 'kayttajatunnus' => $params['kayttajatunnus']));
+			View::make('home.html', array('error' => 'Väärä käyttäjätunnus tai salasana', 'kayttajatunnus' => $params['kayttajatunnus']));
 		}else{
 			$_SESSION['user'] = $user->id;
 
 			Redirect::to('/kilpailija', array('message' => 'Tervetuloa ' . $user->etunimi . ' ' . $user->sukunimi . '!'));
 		}
+	}
+
+	public static function logout(){
+		$_SESSION['user'] = null;
+
+		Redirect::to('/', array('message' => 'Olet kirjautunut ulos!'));
 	}
 }			

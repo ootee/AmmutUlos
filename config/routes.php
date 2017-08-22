@@ -12,6 +12,10 @@
     UserController::handle_login();
   });
 
+  $routes->post('/logout', function(){
+    UserController::logout();
+  });
+
   //Kilpailija
 
   $routes->get('/kilpailija', function(){

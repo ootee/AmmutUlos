@@ -1,6 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 	<h1>Tervetuloa AmmutUlos -järjestelmään</h1>
+	
+	{% if error %}
+  	<div class="alert alert-danger">
+    	<p>{{error}}</p>           
+  	</div>
+	{% endif %}
+
+	{% if user_logged_in %}
+
+	<p>Olet jo kirjautunut, ala selailemaan!</p>
+
+	{% else %}
+
 	<p>Kirjaudu järjestelmään, ole hyvä.</p>
 	<p>Voit myös selata tietoja yläreunan linkeistä ilman kirjautumista.</p>
 	<form method="post" action="{{base_path}}/login">
@@ -15,4 +28,7 @@
 		</div>
 		<button type="submit" class="btn btn-primary">Kirjaudu sisään</button>		
 	</form>
+
+	{% endif %}
+
 {% endblock %}

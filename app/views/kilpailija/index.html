@@ -5,6 +5,12 @@
 
 <h1>Kilpailijalistaus</h1>
 
+{% if message %}
+  <div class="alert alert-success">
+    <p>{{message}}</p>           
+  </div>
+{% endif %}
+
 <p>
 {{forms.add_button("#{base_path}/kilpailija/add", "Lisää kilpailija")}}
 </p>

@@ -9,19 +9,22 @@ class KilpailijaController extends BaseController{
 	}
 
 	public static function store(){
+		self::check_logged_in();
+
 		$params = $_POST;
 		$attributes = array(
 			'etunimi' => $params['etunimi'],
 			'sukunimi' => $params['sukunimi'],
 			'kayttajatunnus' => $params['kayttajatunnus'],
 			'salasana' => $params['salasana']
-		);
+			);
 
 		$kilpailija = new Kilpailija($attributes);
 		$errors = $kilpailija->errors();
 
 		if (count($errors) == 0){
 			$kilpailija->save();
+
 			Redirect::to('/kilpailija/' . $kilpailija->kilpailija_id, array('message' => 'Kilpailija on lisätty listaukseen!'));	
 		}else{
 			View::make('kilpailija/add.html', array('errors' => $errors, 'attributes' => $attributes));
@@ -29,6 +32,7 @@ class KilpailijaController extends BaseController{
 	}
 
 	public static function add(){
+		self::check_logged_in();
 
 		View::make('kilpailija/add.html');
 	}
@@ -40,11 +44,15 @@ class KilpailijaController extends BaseController{
 	}
 
 	public static function edit($id){
+		self::check_logged_in();
+
 		$kilpailija = Kilpailija::find($id);
-		View::make('kilpailija/edit.html', array('kilpailija' => $kilpailija));
+		View::make('kilpailija/edit.html', array('attributes' => $kilpailija));
 	}
 
 	public static function update($id){
+		self::check_logged_in();
+
 		$params = $_POST;
 
 		$attributes = array(
@@ -53,23 +61,24 @@ class KilpailijaController extends BaseController{
 			'sukunimi' => $params['sukunimi'],
 			'kayttajatunnus' => $params['kayttajatunnus'],
 			'salasana' => $params['salasana']
-		);
+			);
 
 		$kilpailija = new Kilpailija($attributes);
+		$errors = $kilpailija->errors();
 
+		if(count($errors) == 0){
+			$kilpailija->update($id);
 
-		//$errors = $kilpailija->errors();
+			Redirect::to('/kilpailija/' . $kilpailija->kilpailija_id, array('message' => 'Kilpailijan tiedot on päivitetty!'));
+		}else{
+			View::make('kilpailija/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+		}
 
-		// if(count($errors) > 0){
-		// 	View::make('kilpailija/edit.html', array('errors' => $errors, 'attributes' => $attributes));
-		// }else{
-		$kilpailija->update($id);
-
-		Redirect::to('/kilpailija/' . $kilpailija->kilpailija_id, array('message' => 'Kilpailijan tiedot on päivitetty!'));
-		 //}
 	}
 
 	public static function delete($id){
+		self::check_logged_in();
+
 		$kilpailija = new Kilpailija(array('kilpailija_id' => $id));
 		$kilpailija->delete();
 

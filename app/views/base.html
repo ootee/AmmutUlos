@@ -44,13 +44,24 @@
           <li><a href="{{base_path}}/kilpailu">Kilpailut</a></li>
         </ul>
           {% if user_logged_in %}
-            <div align="right">Kirjautunut käyttäjä: {{user_logged_in.etunimi}} {{user_logged_in.sukunimi}}<div>
+            
+            <form class="navbar-form navbar-right" method="post" action="{{base_path}}/logout">
+              <button type="submit" class="btn btn-danger">Kirjaudu ulos</button>
+            </form>
+          
+          {% else %}
+
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{{base_path}}/">Kirjaudu sisään</a></li>
+            </ul>
+
           {% endif %}
       </div>
     </div>
   </nav>
 
   <div id="main-container">
+    <div align="right">Kirjautunut käyttäjä: {{user_logged_in.etunimi}} {{user_logged_in.sukunimi}}</div>
     <!-- Dynaaminen sisältö tulee tähän -->
     {% block content %}{% endblock %}
   </div>

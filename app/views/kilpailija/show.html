@@ -5,6 +5,12 @@
 
 <h1>Kilpailija {{kilpailija.etunimi}} {{kilpailija.sukunimi}}</h1>
 
+{% if message %}
+  <div class="alert alert-success">
+    <p>{{message}}</p>           
+  </div>
+{% endif %}
+
 <p>
 {{forms.edit_button("#{base_path}/kilpailija/#{kilpailija.kilpailija_id}/edit")}}
 {{forms.delete_button("#{base_path}/kilpailija/#{kilpailija.kilpailija_id}/delete")}}
