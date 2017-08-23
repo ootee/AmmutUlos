@@ -20,12 +20,12 @@ class RastiController extends BaseController{
 
 		$rasti->save();
 
-		Redirect::to('/rasti/' . $rasti->rasti_id, array('message' => 'Rasti on lisätty!'));
+		Redirect::to('/kilpailu/' . $rasti->kilpailu, array('message' => 'Rasti on lisätty!'));
 	}
 
-	public static function add(){
+	public static function add($kilpailu_id){
 
-		View::make('rasti/add.html');
+		View::make('rasti/add.html', array('kilpailu_id' => $kilpailu_id));
 	}
 
 	public static function show($rasti_id){

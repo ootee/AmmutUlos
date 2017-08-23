@@ -12,6 +12,7 @@
       <th>id</th>
       <th>Päivämäärä</th>
       <th>Paikka</th>
+      <th>Rasteja</th>
       <th></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
       <td><a href="{{base_path}}/kilpailu/{{kilpailu.kilpailu_id}}">{{kilpailu.kilpailu_id}}</td>
       <td>{{kilpailu.pvm}}</td>
       <td>{{kilpailu.paikka}}</td>
+      <td>{{kilpailu.rastilkm}}</td>
       <td><a class "btn btn-default btn-sm" href="{{base_path}}/kilpailu/{{kilpailu.kilpailu_id}}/edit">Muokkaa</a></td>
     </tr>
     {% endfor %}

@@ -61,7 +61,9 @@
   </nav>
 
   <div id="main-container">
-    <div align="right">Kirjautunut käyttäjä: {{user_logged_in.etunimi}} {{user_logged_in.sukunimi}}</div>
+    {% if user_logged_in %}
+      <div align="right">Kirjautunut käyttäjä: {{user_logged_in.etunimi}} {{user_logged_in.sukunimi}}</div>
+    {% endif %}
     <!-- Dynaaminen sisältö tulee tähän -->
     {% block content %}{% endblock %}
   </div>

@@ -1,14 +1,14 @@
 <?php
 
 class Kilpailu extends BaseModel{
-	public $kilpailu_id, $pvm, $paikka;
+	public $kilpailu_id, $pvm, $paikka, $rastilkm;
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
 	}
 
 	public static function all(){
-		$query = DB::connection()->prepare('SELECT * FROM Kilpailu');
+		$query = DB::connection()->prepare('SELECT Kilpailu.kilpailu_id, Kilpailu.pvm, Kilpailu.paikka, count(*) AS rastilkm FROM Kilpailu LEFT JOIN Rasti ON Kilpailu.kilpailu_id = Rasti.kilpailu GROUP BY Kilpailu.kilpailu_id ORDER BY Kilpailu.kilpailu_id ASC');
 		$query->execute();
 		$rows = $query->fetchAll();
 		$kilpailut = array();
@@ -17,7 +17,8 @@ class Kilpailu extends BaseModel{
 			$kilpailut[] = new Kilpailu(array(
 				'kilpailu_id' => $row['kilpailu_id'],
 				'pvm' => $row['pvm'],
-				'paikka' => $row['paikka']
+				'paikka' => $row['paikka'],
+				'rastilkm' => $row['rastilkm']
 			));
 		}
 

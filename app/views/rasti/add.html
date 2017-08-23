@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-	<h1>Lisää rasti</h1>
+	<h1>Lisää rasti kilpailuun {{kilpailu_id}}</h1>
 
 	<form method="post" action="{{base_path}}/rasti">
+
 		<div class="form-group">
 			<label>Numero</label>
 			<input name="rastinro" class="form-control" type="text">
@@ -20,7 +21,7 @@
 
 		<div class="form-group">
 			<label>Kilpailun tunnus</label>
-			<input type="text" name="kilpailu" class="form-control">
+			<input type="text" name="kilpailu" class="form-control" value="{{kilpailu_id}}">
 		</div>
 
 		<div class="form-group">

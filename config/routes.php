@@ -76,12 +76,12 @@
     RastiController::store();
   });
 
-  $routes->get('/rasti/:id', function($id){
+  $routes->get('/kilpailu/:kilpailu/rasti/:id', function($id){
     RastiController::show($id);
   });
 
-  $routes->get('/rasti/add', function() {
-  	RastiController::add();
+  $routes->get('/kilpailu/:id/add_rasti', function($id) {
+  	RastiController::add($id);
   });
 
   $routes->get('/rasti/:id/edit', function($id) {

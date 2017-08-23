@@ -25,7 +25,7 @@ class KilpailijaController extends BaseController{
 		if (count($errors) == 0){
 			$kilpailija->save();
 
-			Redirect::to('/kilpailija/' . $kilpailija->kilpailija_id, array('message' => 'Kilpailija on lisätty listaukseen!'));	
+			Redirect::to('/kilpailija', array('message' => 'Kilpailija on lisätty listaukseen!'));	
 		}else{
 			View::make('kilpailija/add.html', array('errors' => $errors, 'attributes' => $attributes));
 		}
