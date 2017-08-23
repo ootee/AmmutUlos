@@ -27,3 +27,7 @@ Toimintoja:
 * [Kilpailulistan muokkaus](http://otanttu.users.cs.helsinki.fi/ammutulos/kilpailulista_edit)
 * [Kilpailun muokkaus](http://otanttu.users.cs.helsinki.fi/ammutulos/kilpailu_edit)
 * [Rastin muokkaus](http://otanttu.users.cs.helsinki.fi/ammutulos/rasti_edit)
+
+## Testitunnukset
+
+Sovelluksen käyttäminen ei vaadi kirjautumista, mutta voit halutessasi voit käyttää esim. tunnusta 'testi' ja salasanaa 'testi'.
