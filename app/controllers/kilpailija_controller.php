@@ -16,7 +16,8 @@ class KilpailijaController extends BaseController{
 			'etunimi' => $params['etunimi'],
 			'sukunimi' => $params['sukunimi'],
 			'kayttajatunnus' => $params['kayttajatunnus'],
-			'salasana' => $params['salasana']
+			'salasana' => $params['salasana'],
+			'usergroup' => $params['usergroup']
 			);
 
 		$kilpailija = new Kilpailija($attributes);
@@ -60,7 +61,8 @@ class KilpailijaController extends BaseController{
 			'etunimi' => $params['etunimi'],
 			'sukunimi' => $params['sukunimi'],
 			'kayttajatunnus' => $params['kayttajatunnus'],
-			'salasana' => $params['salasana']
+			'salasana' => $params['salasana'],
+			'usergroup' => $params['usergroup']
 			);
 
 		$kilpailija = new Kilpailija($attributes);

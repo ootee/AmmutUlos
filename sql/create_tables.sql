@@ -1,16 +1,17 @@
 -- Lisää CREATE TABLE lauseet tähän tiedostoon
 CREATE TABLE Kilpailija (
 	kilpailija_id SERIAL PRIMARY KEY,
-	etunimi TEXT NOT NULL,
-	sukunimi TEXT NOT NULL,
-	kayttajatunnus TEXT NOT NULL,
-	salasana TEXT NOT NULL
+	etunimi VARCHAR(30) NOT NULL,
+	sukunimi VARCHAR(30) NOT NULL,
+	kayttajatunnus VARCHAR(16) NOT NULL,
+	salasana VARCHAR(16) NOT NULL,
+	usergroup TEXT
 );
 
 CREATE TABLE Kilpailu (
 	kilpailu_id SERIAL PRIMARY KEY,
 	pvm DATE NOT NULL,
-	paikka TEXT NOT NULL
+	paikka VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE Rasti (

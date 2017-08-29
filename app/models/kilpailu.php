@@ -1,10 +1,13 @@
 <?php
 
 class Kilpailu extends BaseModel{
+
 	public $kilpailu_id, $pvm, $paikka, $rastilkm;
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
+		$this->validators = array('validate_pakollinen', 'validate_max_pituus', 'validate_pvm');
+
 	}
 
 	public static function all(){
@@ -52,6 +55,32 @@ class Kilpailu extends BaseModel{
 		$row = $query->fetch();
 
 		$this->kilpailu_id = $row['kilpailu_id'];
+	}
+	
+	public function validate_pakollinen(){
+		$errors = array();
+
+		$errors[] = parent::validate_required($this->paikka, 'Paikka');
+
+		return $errors;
+	}
+
+	public function validate_max_pituus(){
+		$errors = array();
+
+		$errors[] = parent::validate_max_length($this->paikka, 'Paikka', 30);
+
+		return $errors;
+	}
+
+	public function validate_pvm(){
+		$errors = array();
+
+		if (!parent::validate_date($this->pvm)) {
+			$errors[] = 'Tarkasta päivämäärä!';
+		}
+
+		return $errors;
 	}
 
 }

@@ -18,7 +18,7 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Kilpailija id</th>
+      <th>Kilpailijatunnus</th>
       <th>Etunimi</th>
       <th>Sukunimi</th>
       <th></th>
@@ -31,7 +31,14 @@
       <td><a href="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}">{{kilpailija.kilpailija_id}}</td>
       <td>{{kilpailija.etunimi}}</td>
       <td>{{kilpailija.sukunimi}}</td>
-      <td><a class "btn btn-default btn-sm" href="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}/edit">Muokkaa</a></td>
+      <td>
+      {% if user_logged_in.usergroup == 'tuomari' %}
+        <a class "btn btn-default btn-sm" href="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}/edit">Muokkaa</a>
+      {% elseif user_logged_in.usergroup == 'superuser' %}
+        <a class "btn btn-default btn-sm" href="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}/edit">Muokkaa</a>
+      {% else %}
+      {% endif %}
+      </td>
     </tr>
     {% endfor %}
   </tbody> 

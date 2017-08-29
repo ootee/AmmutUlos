@@ -26,7 +26,7 @@ class BaseModel{
   }
 
   public function validate_numeric($string, $name){
-    $errors = null;
+    $error = null;
 
     if(!is_numeric($string)){
       $error = $name . ' täytyy olla luku!';
@@ -35,9 +35,43 @@ class BaseModel{
     return $error;
   }
 
-  // public function validate_date(){
-  //   //todo
-  // }
+  public function validate_integer($string, $name){
+    $error = null;
+
+    if(!is_int($string)){
+      $error = $name . ' täytyy olla kokonaisluku!';
+    }
+
+    return error;
+  }
+
+  public function validate_max_length($string, $name, $length){
+    $error = null;
+
+    if (strlen($string) > $length){
+      $error = $name . ' saa olla korkeintaan ' . $length . ' merkkiä pitkä!';
+    }
+
+    return $error;
+  }
+
+  public function validate_min_length($string, $name, $length){
+    $error = null;
+
+    if (strlen($string) < $length && strlen($string) != 0){
+      $error = $name . ' pitää olla vähintään ' . $length . ' merkkiä pitkä!';
+    }
+
+    return $error;
+  }
+
+  public function validate_date($string){
+    $matches = array();
+    $pattern = '/^([0-9]{1,2})\\.([0-9]{1,2})\\.([0-9]{4})$/';
+    if (!preg_match($pattern, $string, $matches)) return false;
+    if (!checkdate($matches[2], $matches[1], $matches[3])) return false;
+      return true;
+  }
 
   public function errors(){
       // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona

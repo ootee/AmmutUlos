@@ -1,7 +1,7 @@
 <?php
 
 class User extends BaseModel{
-	public $id, $kayttajatunnus, $salasana, $etunimi, $sukunimi;
+	public $id, $kayttajatunnus, $salasana, $etunimi, $sukunimi, $usergroup;
 
 	function __construct($attributes){
 		parent::__construct($attributes);
@@ -18,7 +18,8 @@ class User extends BaseModel{
 				'kayttajatunnus' => $row['kayttajatunnus'],
 				'salasana' => $row['salasana'],
 				'etunimi' => $row['etunimi'],
-				'sukunimi' => $row['sukunimi']
+				'sukunimi' => $row['sukunimi'],
+				'usergroup' => $row['usergroup']
 			));
 
 		}else{
@@ -37,7 +38,8 @@ class User extends BaseModel{
 				'etunimi' => $row['etunimi'],
 				'sukunimi' => $row['sukunimi'],
 				'kayttajatunnus' => $row['kayttajatunnus'],
-				'salasana' => $row['salasana']
+				'salasana' => $row['salasana'],
+				'usergroup' => $row['usergroup']
 			));
 
 			return $user;

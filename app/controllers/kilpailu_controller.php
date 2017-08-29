@@ -9,16 +9,25 @@ class KilpailuController extends BaseController{
 	}	
 
 	public static function store(){
+		self::check_logged_in();
 		
 		$params = $_POST;
-		$kilpailu = new Kilpailu(array(
+		$attributes = array(
 			'pvm' => $params['pvm'],
 			'paikka' => $params['paikka']
-		));
+		);
 
-		$kilpailu->save();
+		$kilpailu = new Kilpailu($attributes);
+		$errors = $kilpailu->errors();
 
-		Redirect::to('/kilpailu/' . $kilpailu->kilpailu_id, array('message' => 'Kilpailu on lisätty!'));
+		if (count($errors) == 0){
+			$kilpailu->save();
+			
+			Redirect::to('/kilpailu', array('message' => 'Kilpailu on lisätty!'));
+		}else{
+			View::make('kilpailu/add.html', array('errors' => $errors, 'attributes' => $attributes));
+		}
+
 	}
 
 	public static function add(){
