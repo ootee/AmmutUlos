@@ -11,7 +11,7 @@ class Kilpailu extends BaseModel{
 	}
 
 	public static function all(){
-		$query = DB::connection()->prepare('SELECT Kilpailu.kilpailu_id, Kilpailu.pvm, Kilpailu.paikka, count(rasti_id) AS rastilkm FROM Kilpailu FULL OUTER JOIN Rasti ON Kilpailu.kilpailu_id = Rasti.kilpailu GROUP BY Kilpailu.kilpailu_id ORDER BY Kilpailu.kilpailu_id ASC');
+		$query = DB::connection()->prepare('SELECT Kilpailu.kilpailu_id, Kilpailu.pvm, Kilpailu.paikka, count(rasti_id) AS rastilkm FROM Kilpailu FULL OUTER JOIN Rasti ON Kilpailu.kilpailu_id = Rasti.kilpailu GROUP BY Kilpailu.kilpailu_id ORDER BY Kilpailu.pvm DESC');
 		$query->execute();
 		$rows = $query->fetchAll();
 		$kilpailut = array();
@@ -68,6 +68,12 @@ class Kilpailu extends BaseModel{
 		$query->bindParam('paikka', $this->paikka, PDO::PARAM_STR);
 		
 		$query->execute();
+	}
+
+	public function delete(){
+		$query = DB::connection()->prepare('DELETE FROM Kilpailu WHERE kilpailu_id = :kilpailu_id');
+
+		$query->execute(array('kilpailu_id' => $this->kilpailu_id));
 	}
 	
 	public function validate_pakollinen(){

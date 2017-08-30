@@ -1,13 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% import "macros/forms.html" as forms %}
+
+
 <h1>Kilpailu {{kilpailu_id}}</h1>
+
+{% if message %}
+<div class="alert alert-success">
+  <p>{{message}}</p>           
+</div>
+{% endif %}
 
 <p>
   {% if user_logged_in.usergroup == 'tuomari' %}
-  <a href="{{base_path}}/rasti/add/{{kilpailu_id}}" class="btn btn-success">Lisää rasti</a>
+  {{forms.add_button("#{base_path}/rasti/add/#{kilpailu_id}", "Lisää rasti")}}
+  {{forms.edit_button("#{base_path}/kilpailu/#{kilpailu_id}/edit")}}
+
 
   {% elseif user_logged_in.usergroup == 'superuser' %}
-  <a href="{{base_path}}/rasti/add/{{kilpailu_id}}" class="btn btn-success">Lisää rasti</a>
+  {{forms.add_button("#{base_path}/rasti/add/#{kilpailu_id}", "Lisää rasti")}}
+  {{forms.edit_button("#{base_path}/kilpailu/#{kilpailu_id}/edit")}}
+  {{forms.delete_button("#{base_path}/kilpailu/#{kilpailu.kilpailu_id}/delete")}}
 
   {% else %}
   {% endif %}
@@ -21,14 +35,6 @@
       <th>Kuvaus</th>
       <th>Nopein aika</th>
       <th>Voittaja</th>
-      {% if user_logged_in.usergroup == 'tuomari' %}
-      <th></th>
-
-      {% elseif user_logged_in.usergroup == 'superuser' %}
-      <th></th>
-
-      {% else %}
-      {% endif %}
     </tr>
   </thead>
 
@@ -40,14 +46,6 @@
       <td width="40%">{{rasti.kuvaus}}</td>
       <td width="20%"></td>
       <td width="20%"></td>
-      {% if user_logged_in.usergroup == 'tuomari' %}
-      <td width="5"><a class "btn btn-default btn-sm" href="{{base_path}}/rasti/{{rasti.rasti_id}}/edit">Muokkaa</a></td>
-
-      {% elseif user_logged_in.usergroup == 'superuser' %}
-      <td width="5"><a class "btn btn-default btn-sm" href="{{base_path}}/rasti/{{rasti.rasti_id}}/edit">Muokkaa</a></td>
-
-      {% else %}
-      {% endif %}
     </tr>
     {% endfor %}
   </tbody> 

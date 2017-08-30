@@ -35,10 +35,7 @@
 
 		<div class="form-group">
 			<label>Käyttöoikeudet</label>
-			<select class="form-control" name="usergroup">
-				<option value="">Peruskäyttäjä</option>
-				<option value="tuomari">Tuomari</option>
-				<option value="superuser">Pääkäyttäjä</option>
+			<input name="usergroup" class="form-control" type="text" disabled="true" value="{{attributes.usergroup}}">
 			</select>
 		</div>
 
@@ -47,4 +44,6 @@
 		</div>
 
 	</form>
+
+	<a class="btn btn-danger" href="{{base_path}}/kilpailija/{{attributes.kilpailija_id}}">Peruuta</a>
 {% endblock %}

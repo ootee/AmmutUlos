@@ -28,19 +28,12 @@
 			<input name="taululkm" class="form-control" type="text" value="{{attributes.taululkm}}">
 		</div>
 
-		<!-- <div class="form-group">
-			<label>Käyttäjätunnus</label>
-			<input name="kayttajatunnus" class="form-control" type="text" value="{{attributes.kayttajatunnus}}">
-		</div>
-
-		<div class="form-group">
-			<label>Salasana</label>
-			<input name="salasana" class="form-control" type="text" value="{{attributes.salasana}}">
-		</div> -->
-
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary">Päivitä</button>
 		</div>
 
 	</form>
+
+		<a class="btn btn-danger" href="{{base_path}}/rasti/{{attributes.rasti_id}}">Peruuta</a>
+
 {% endblock %}

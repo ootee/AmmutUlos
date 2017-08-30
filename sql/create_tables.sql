@@ -22,14 +22,6 @@ CREATE TABLE Rasti (
 	kilpailu INTEGER REFERENCES Kilpailu(kilpailu_id)
 );
 
-CREATE TABLE Tulos (
-	tulos_id SERIAL PRIMARY KEY,
-	aika DECIMAL NOT NULL,
-	pisteet INTEGER NOT NULL,
-	rasti INTEGER REFERENCES Rasti(rasti_id),
-	kilpailija INTEGER REFERENCES Kilpailija(kilpailija_id)
-);
-
 CREATE TABLE Osallistuminen (
 	kilpailija INTEGER REFERENCES Kilpailija(kilpailija_id),
 	kilpailu INTEGER REFERENCES Kilpailu(kilpailu_id)

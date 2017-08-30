@@ -9,7 +9,7 @@ class Rasti extends BaseModel{
 	}
 
 	public static function all(){
-		$query = DB::connection()->prepare('SELECT * FROM Rasti ORDER BY rasti_id ASC');
+		$query = DB::connection()->prepare('SELECT * FROM Rasti ORDER BY kilpailu, rasti_id ASC');
 		$query->execute();
 		$rows = $query->fetchAll();
 		$rastit = array();

@@ -1,12 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Rasti {{rasti.rastinro}}</h1>
+
+{% import "macros/forms.html" as forms %}
+
+<h1>Rasti {{rasti.rastinro}} kilpailusta {{rasti.kilpailu}}</h1>
+
+{% if message %}
+<div class="alert alert-success">
+  <p>{{message}}</p>           
+</div>
+{% endif %}
 
 <p>
   {% if user_logged_in.usergroup == 'tuomari' %}
-  <a href="{{base_path}}/tulos/add" class="btn btn-success">Lisää tulos</a>
+  {{forms.edit_button("#{base_path}/rasti/#{rasti.rasti_id}/edit")}}
+
+
   {% elseif user_logged_in.usergroup == 'superuser' %}
-  <a href="{{base_path}}/tulos/add" class="btn btn-success">Lisää tulos</a>
+  {{forms.edit_button("#{base_path}/rasti/#{rasti.rasti_id}/edit")}}
+  {{forms.delete_button("#{base_path}/rasti/#{rasti.rasti_id}/delete")}}
+
   {% else %}
   {% endif %}
 </p>
@@ -14,7 +27,6 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Rasti #</th>
       <th>Kuvaus</th>
       <th>Tauluja</th>
       <th>Kilpailun tunnus</th>
@@ -23,11 +35,13 @@
 
   <tbody>
     <tr>
-      <td>{{rasti.rastinro}}</td>
       <td>{{rasti.kuvaus}}</td>
       <td>{{rasti.taululkm}}</td>
       <td>{{rasti.kilpailu}}</td>
     </tr>
   </tbody> 
 </table>
+
+<a class "btn btn-default btn-sm" href="{{base_path}}/kilpailu/{{rasti.kilpailu}}">Takaisin listaukseen</a>
+
 {% endblock %} 

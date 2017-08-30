@@ -14,8 +14,10 @@
 <p>
   {% if user_logged_in.usergroup == 'tuomari' %}
   {{forms.add_button("#{base_path}/kilpailija/add", "Lisää kilpailija")}}
+
   {% elseif user_logged_in.usergroup == 'superuser' %}
   {{forms.add_button("#{base_path}/kilpailija/add", "Lisää kilpailija")}}
+
   {% else %}
   {% endif %}
 </p>
@@ -26,12 +28,6 @@
       <th>Kilpailijatunnus</th>
       <th>Etunimi</th>
       <th>Sukunimi</th>
-      {% if user_logged_in.usergroup == 'tuomari' %}
-      <th></th>
-      {% elseif user_logged_in.usergroup == 'superuser' %}
-      <th></th>
-      {% else %}
-      {% endif %}
     </tr>
   </thead>
 
@@ -41,16 +37,6 @@
     <td width="10%"><a href="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}">{{kilpailija.kilpailija_id}}</td>
       <td width="40%">{{kilpailija.etunimi}}</td>
       <td width="40%">{{kilpailija.sukunimi}}</td>
-      {% if user_logged_in.usergroup == 'tuomari' %}
-      <td width="10%">
-        <a class "btn btn-default btn-sm" href="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}/edit">Muokkaa</a>
-      </td>
-      {% elseif user_logged_in.usergroup == 'superuser' %}
-      <td width="10%">
-        <a class "btn btn-default btn-sm" href="{{base_path}}/kilpailija/{{kilpailija.kilpailija_id}}/edit">Muokkaa</a>
-      </td>
-      {% else %}
-      {% endif %}
     </tr>
     {% endfor %}
   </tbody> 

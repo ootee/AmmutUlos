@@ -70,6 +70,14 @@ class KilpailuController extends BaseController{
 		}else{
 			View::make('kilpailu/edit.html', array('errors' => $errors, 'attributes' => $attributes));
 		}
+	}
 
+	public static function delete($id){
+		self::check_logged_in();
+
+		$kilpailu = new Kilpailu(array('kilpailu_id' => $id));
+		$kilpailu->delete();
+
+		Redirect::to('/kilpailu', array('message' => 'Kilpailu on poistettu!'));
 	}
 }
