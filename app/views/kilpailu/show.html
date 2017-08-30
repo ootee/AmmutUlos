@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Kilpailu</h1>
+<h1>Kilpailu {{kilpailu_id}}</h1>
 
 <p>
-  <a href="{{base_path}}/rasti/add" class="btn btn-success">Lisää rasti</a>
+  {% if user_logged_in.usergroup == 'tuomari' %}
+  <a href="{{base_path}}/rasti/add/{{kilpailu_id}}" class="btn btn-success">Lisää rasti</a>
+
+  {% elseif user_logged_in.usergroup == 'superuser' %}
+  <a href="{{base_path}}/rasti/add/{{kilpailu_id}}" class="btn btn-success">Lisää rasti</a>
+
+  {% else %}
+  {% endif %}
 </p>
 
 <table class="table table-striped table-bordered">
@@ -14,21 +21,33 @@
       <th>Kuvaus</th>
       <th>Nopein aika</th>
       <th>Voittaja</th>
+      {% if user_logged_in.usergroup == 'tuomari' %}
       <th></th>
+
+      {% elseif user_logged_in.usergroup == 'superuser' %}
       <th></th>
+
+      {% else %}
+      {% endif %}
     </tr>
   </thead>
- 
+
   <tbody>
     {% for rasti in rastit %}
     <tr>
-      <td width="5%">{{rasti.rastinro}}</td>
+      <td width="5%"><a href="{{base_path}}/rasti/{{rasti.rasti_id}}">{{rasti.rastinro}}</a></td>
       <td width="5%">{{rasti.taululkm}}</td>
-      <td width="35%">{{rasti.kuvaus}}</td>
-      <td width="25%"></td>
-      <td width="25%"></td>
-      <td><a class "btn btn-default btn-sm" href="{{base_path}}/rasti/{{rasti.rasti_id}}/edit">Muokkaa</a></td>
-      <td> <a href="{{base_path}}/rasti/add" class="btn btn-success">Lisää rasti</a></td>
+      <td width="40%">{{rasti.kuvaus}}</td>
+      <td width="20%"></td>
+      <td width="20%"></td>
+      {% if user_logged_in.usergroup == 'tuomari' %}
+      <td width="5"><a class "btn btn-default btn-sm" href="{{base_path}}/rasti/{{rasti.rasti_id}}/edit">Muokkaa</a></td>
+
+      {% elseif user_logged_in.usergroup == 'superuser' %}
+      <td width="5"><a class "btn btn-default btn-sm" href="{{base_path}}/rasti/{{rasti.rasti_id}}/edit">Muokkaa</a></td>
+
+      {% else %}
+      {% endif %}
     </tr>
     {% endfor %}
   </tbody> 

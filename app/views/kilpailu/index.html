@@ -3,7 +3,14 @@
 <h1>Kilpailulistaus</h1>
 
 <p>
+  {% if user_logged_in.usergroup == 'tuomari' %}
   <a href="{{base_path}}/kilpailu/add" class="btn btn-success">Lisää kilpailu</a>
+
+  {% elseif user_logged_in.usergroup == 'superuser' %}
+  <a href="{{base_path}}/kilpailu/add" class="btn btn-success">Lisää kilpailu</a>
+
+  {% else %}
+  {% endif %}
 </p>
 
 <table class="table table-striped table-bordered">
@@ -13,7 +20,12 @@
       <th>Päivämäärä</th>
       <th>Paikka</th>
       <th>Rasteja</th>
+      {% if user_logged_in.usergroup == 'tuomari' %}
       <th></th>
+      {% elseif user_logged_in.usergroup == 'superuser' %}
+      <th></th>
+      {% else %}
+      {% endif %}
     </tr>
   </thead>
 
@@ -24,7 +36,14 @@
       <td>{{kilpailu.pvm}}</td>
       <td>{{kilpailu.paikka}}</td>
       <td>{{kilpailu.rastilkm}}</td>
+      {% if user_logged_in.usergroup == 'tuomari' %}
       <td><a class "btn btn-default btn-sm" href="{{base_path}}/kilpailu/{{kilpailu.kilpailu_id}}/edit">Muokkaa</a></td>
+
+      {% elseif user_logged_in.usergroup == 'superuser' %}
+      <td><a class "btn btn-default btn-sm" href="{{base_path}}/kilpailu/{{kilpailu.kilpailu_id}}/edit">Muokkaa</a></td>
+
+      {% else %}
+      {% endif %}</td>
     </tr>
     {% endfor %}
   </tbody> 

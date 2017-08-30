@@ -83,8 +83,8 @@
     RastiController::store();
   });
 
-  $routes->get('/rasti/add', function(){
-    RastiController::add();
+  $routes->get('/rasti/add/:id', function($id){
+    RastiController::add($id);
   });
 
   $routes->get('/rasti/:id', function($id){
