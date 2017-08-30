@@ -41,4 +41,35 @@ class KilpailuController extends BaseController{
 
 		View::make('kilpailu/show.html', array('rastit' => $rastit), array('kilpailu' => $kilpailu_id));
 	}
+
+	public static function edit($id){
+		self::check_logged_in();
+
+		$kilpailu = Kilpailu::find($id);
+		View::make('kilpailu/edit.html', array('attributes' => $kilpailu));
+	}
+
+		public static function update($id){
+		self::check_logged_in();
+
+		$params = $_POST;
+
+		$attributes = array(
+			'kilpailu_id' => $id,
+			'pvm' => $params['pvm'],
+			'paikka' => $params['paikka'],
+			);
+
+		$kilpailu = new Kilpailu($attributes);
+		$errors = $kilpailu->errors();
+
+		if(count($errors) == 0){
+			$kilpailu->update($id);
+
+			Redirect::to('/kilpailu', array('message' => 'Kilpailun tiedot on päivitetty!'));
+		}else{
+			View::make('kilpailu/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+		}
+
+	}
 }

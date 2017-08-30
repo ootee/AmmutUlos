@@ -65,6 +65,13 @@
   	KilpailuController::show($id);
   });
 
+  $routes->get('/kilpailu/:id/edit', function($id){
+    KilpailuController::edit($id);
+  });
+
+  $routes->post('/kilpailu/:id/edit', function($id){
+    KilpailuController::update($id);
+  });
 
   //Rasti
 
@@ -76,12 +83,12 @@
     RastiController::store();
   });
 
-  $routes->get('/kilpailu/:kilpailu/rasti/:id', function($id){
-    RastiController::show($id);
+  $routes->get('/rasti/add', function(){
+    RastiController::add();
   });
 
-  $routes->get('/kilpailu/:id/add_rasti', function($id) {
-  	RastiController::add($id);
+  $routes->get('/rasti/:id', function($id){
+    RastiController::show($id);
   });
 
   $routes->get('/rasti/:id/edit', function($id) {
@@ -91,6 +98,11 @@
   $routes->post('/rasti/:id/edit', function($id) {
     RastiController::update($id);
   });
+
+
+
+
+
 
   $routes->get('/hiekkalaatikko', function() {
     EtusivuController::sandbox();

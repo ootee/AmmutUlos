@@ -56,6 +56,19 @@ class Kilpailu extends BaseModel{
 
 		$this->kilpailu_id = $row['kilpailu_id'];
 	}
+
+	public function update($kilpailija_id){
+		$query = DB::connection()->prepare('UPDATE Kilpailu SET 
+			pvm = :pvm, 
+			paikka = :paikka
+			WHERE kilpailu_id = :kilpailu_id');
+
+		$query->bindParam(':kilpailu_id', $this->kilpailu_id, PDO::PARAM_STR);
+		$query->bindParam(':pvm', $this->pvm, PDO::PARAM_STR);
+		$query->bindParam('paikka', $this->paikka, PDO::PARAM_STR);
+		
+		$query->execute();
+	}
 	
 	public function validate_pakollinen(){
 		$errors = array();

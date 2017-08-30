@@ -67,9 +67,9 @@ class BaseModel{
 
   public function validate_date($string){
     $matches = array();
-    $pattern = '/^([0-9]{1,2})\\.([0-9]{1,2})\\.([0-9]{4})$/';
+    $pattern = '/^([0-9]{4})\\-([0-9]{1,2})\\-([0-9]{1,2})$/';
     if (!preg_match($pattern, $string, $matches)) return false;
-    if (!checkdate($matches[2], $matches[1], $matches[3])) return false;
+    if (!checkdate($matches[2], $matches[3], $matches[1])) return false;
       return true;
   }
 

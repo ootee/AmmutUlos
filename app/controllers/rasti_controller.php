@@ -23,9 +23,10 @@ class RastiController extends BaseController{
 		Redirect::to('/kilpailu/' . $rasti->kilpailu, array('message' => 'Rasti on lisätty!'));
 	}
 
-	public static function add($kilpailu_id){
+	public static function add(){
+		self::check_logged_in();
 
-		View::make('rasti/add.html', array('kilpailu_id' => $kilpailu_id));
+		View::make('rasti/add.html');
 	}
 
 	public static function show($rasti_id){
