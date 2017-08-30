@@ -25,21 +25,11 @@ class BaseModel{
     return $error;
   }
 
-  public function validate_integer($string, $name){
-    $error = null;
-
-    if(is_int($string)){
-      $error = $name . 'n täytyy olla kokonaisluku!';
-    }
-
-    return $error;
-  }
-
   public function validate_integer_input($string, $name){
     $error = null;
 
     if (!preg_match('/^([0-9]{1,2})$/', $string)) {
-      $error = $name . ' saa olla korkeintaan 2 merkkiä pitkä!';
+      $error = $name . ' saa olla korkeintaan 2 merkkiä pitkä kokonaisluku!';
     }
 
     return $error;

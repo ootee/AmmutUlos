@@ -5,7 +5,7 @@ class Rasti extends BaseModel{
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		$this->validators = array('validate_pakollinen', 'validate_max_pituus', 'validate_kokonaisluku', 'validate_kokokaisluvun_pituus');
+		$this->validators = array('validate_pakollinen', 'validate_max_pituus', 'validate_kokokaisluvun_pituus');
 	}
 
 	public static function all(){
@@ -28,7 +28,7 @@ class Rasti extends BaseModel{
 	}
 
 	public static function haeKilpailunRastit($id){
-		$query = DB::connection()->prepare('SELECT * FROM Rasti WHERE kilpailu = :id');
+		$query = DB::connection()->prepare('SELECT * FROM Rasti WHERE kilpailu = :id ORDER BY rastinro ASC');
 		$query->execute(array('id' => $id));
 		$rows = $query->fetchAll();
 		$rastit = array();
@@ -102,16 +102,7 @@ class Rasti extends BaseModel{
 		
 		$errors[] = parent::validate_required($this->rastinro, 'Rastin numero');
 		$errors[] = parent::validate_required($this->kuvaus, 'Kuvaus');
-		$errors[] = parent::validate_required($this->taululkm, 'Taulujen lukumäärä');
-
-		return $errors;
-	}
-
-	public function validate_kokonaisluku(){
-		$errors = array();
-
-		$errors[] = parent::validate_integer($this->rastinro, 'Rastin numero');
-		$errors[] = parent::validate_integer($this->taululkm, 'Taulujen lukumäärä');
+		$errors[] = parent::validate_required($this->taululkm, 'Tauluja');
 
 		return $errors;
 	}
@@ -120,8 +111,6 @@ class Rasti extends BaseModel{
 		$errors = array();
 
 		$errors[] = parent::validate_max_length($this->kuvaus, 'Kuvaus', 100);
-		$errors[] = parent::validate_max_length($this->rastinro, 'Rastin numero', 2);
-		$errors[] = parent::validate_max_length($this->taululkm, 'Taulujen lukumäärä', 2);
 
 		return $errors;
 	}
@@ -130,7 +119,7 @@ class Rasti extends BaseModel{
 		$errors = array();
 
 		$errors[] = parent::validate_integer_input($this->rastinro, 'Rastin numero');
-		$errors[] = parent::validate_integer_input($this->taululkm, 'Taulujen lukumäärä');
+		$errors[] = parent::validate_integer_input($this->taululkm, 'Tauluja');
 
 		return $errors;
 	}

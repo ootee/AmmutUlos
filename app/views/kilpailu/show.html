@@ -33,19 +33,15 @@
       <th>Rasti #</th>
       <th>Tauluja</th>
       <th>Kuvaus</th>
-      <th>Nopein aika</th>
-      <th>Voittaja</th>
     </tr>
   </thead>
 
   <tbody>
     {% for rasti in rastit %}
     <tr>
-      <td width="5%"><a href="{{base_path}}/rasti/{{rasti.rasti_id}}">{{rasti.rastinro}}</a></td>
-      <td width="5%">{{rasti.taululkm}}</td>
-      <td width="40%">{{rasti.kuvaus}}</td>
-      <td width="20%"></td>
-      <td width="20%"></td>
+      <td width="10%"><a href="{{base_path}}/rasti/{{rasti.rasti_id}}">{{rasti.rastinro}}</a></td>
+      <td width="10%">{{rasti.taululkm}}</td>
+      <td width="80%">{{rasti.kuvaus}}</td>
     </tr>
     {% endfor %}
   </tbody> 
