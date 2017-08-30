@@ -46,6 +46,24 @@
   </tbody> 
 </table>
 
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Kilpailija</th>
+      <th>Kilpailu</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for osallistuminen in osallistumiset %}
+    <tr>
+      <td>{{osallistuminen.kilpailija}}</td>
+      <td>{{osallistuminen.kilpailu}}</td>
+    </tr>
+    {% endfor %}
+  </tbody> 
+</table>
+
 <a class "btn btn-default btn-sm" href="{{base_path}}/kilpailija">Takaisin listaukseen</a>
 
 {% endblock %} 

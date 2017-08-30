@@ -40,8 +40,9 @@ class KilpailijaController extends BaseController{
 
 	public static function show($kilpailija_id){
 		$kilpailija = Kilpailija::find($kilpailija_id);
+		$osallistumiset = Osallistuminen::haeOsallistumiset($kilpailija_id);
 
-		View::make('kilpailija/show.html', array('kilpailija' => $kilpailija));	
+		View::make('kilpailija/show.html', array('kilpailija' => $kilpailija, 'osallistumiset' => $osallistumiset));	
 	}
 
 	public static function edit($id){
