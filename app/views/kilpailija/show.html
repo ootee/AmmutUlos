@@ -49,16 +49,22 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Kilpailija</th>
-      <th>Kilpailu</th>
+      <th>Kilpailun tunnus</th>
+      <th>Päivämäärä</th>
+      <th>Paikka</th>
+      <th>Kilpailijoita</th>
     </tr>
   </thead>
 
+  <h2>Osallistutut kilpailut</h2>
+  
   <tbody>
     {% for osallistuminen in osallistumiset %}
     <tr>
-      <td>{{osallistuminen.kilpailija}}</td>
-      <td>{{osallistuminen.kilpailu}}</td>
+      <td width="10%"><a href="{{base_path}}/kilpailu/{{osallistuminen.kilpailu}}">{{osallistuminen.kilpailu}}</a></td>
+      <td>{{osallistuminen.pvm}}</td>
+      <td>{{osallistuminen.paikka}}</td>
+      <td>{{osallistuminen.kilpailijalkm}}</td>
     </tr>
     {% endfor %}
   </tbody> 

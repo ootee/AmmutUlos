@@ -11,7 +11,7 @@ class Kilpailu extends BaseModel{
 	}
 
 	public static function all(){
-		$query = DB::connection()->prepare('SELECT Kilpailu.kilpailu_id, Kilpailu.pvm, Kilpailu.paikka, count(rasti_id) AS rastilkm FROM Kilpailu FULL OUTER JOIN Rasti ON Kilpailu.kilpailu_id = Rasti.kilpailu GROUP BY Kilpailu.kilpailu_id ORDER BY Kilpailu.pvm DESC');
+		$query = DB::connection()->prepare('SELECT Kilpailu.kilpailu_id, Kilpailu.pvm, Kilpailu.paikka, count(rasti_id) AS rastilkm FROM Kilpailu JOIN Rasti ON Kilpailu.kilpailu_id = Rasti.kilpailu GROUP BY Kilpailu.kilpailu_id ORDER BY Kilpailu.pvm DESC');
 		$query->execute();
 		$rows = $query->fetchAll();
 		$kilpailut = array();
