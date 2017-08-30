@@ -26,30 +26,16 @@
       <th>Rasti #</th>
       <th>Kuvaus</th>
       <th>Tauluja</th>
-      {% if user_logged_in.usergroup == 'tuomari' %}
-      <th></th>
-      {% elseif user_logged_in.usergroup == 'superuser' %}
-      <th></th>
-      {% else %}
-      {% endif %}    
     </tr>
   </thead>
 
   <tbody>
     {% for rasti in rastit %}
     <tr>
-      <td width="5%"><a href="{{base_path}}/kilpailu/{{rasti.kilpailu}}">{{rasti.kilpailu}}</a></td>
-      <td width="5%"><a href="{{base_path}}/rasti/{{rasti.rastinro}}">{{rasti.rastinro}}</a></td>
-      <td width="80%">{{rasti.kuvaus}}</td>
+    <td width="10%"><a href="{{base_path}}/kilpailu/{{rasti.kilpailu}}">{{rasti.kilpailu}}</a></td>
+      <td width="10%"><a href="{{base_path}}/rasti/{{rasti.rastinro}}">{{rasti.rastinro}}</a></td>
+      <td width="60%">{{rasti.kuvaus}}</td>
       <td width="5%">{{rasti.taululkm}}</td>
-      {% if user_logged_in.usergroup == 'tuomari' %}
-      <td width="5%"><a class "btn btn-default btn-sm" href="{{base_path}}/rasti/{{rasti.rasti_id}}/edit">Muokkaa</a></td>
-
-      {% elseif user_logged_in.usergroup == 'superuser' %}
-      <td width="5%"><a class "btn btn-default btn-sm" href="{{base_path}}/rasti/{{rasti.rasti_id}}/edit">Muokkaa</a></td>
-
-      {% else %}
-      {% endif %}   
     </tr>
     {% endfor %}
   </tbody> 

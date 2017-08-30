@@ -79,7 +79,7 @@ class Kilpailija extends BaseModel{
 			salasana = :salasana
 			WHERE kilpailija_id = :kilpailija_id');
 
-		$query->bindValue(':kilpailija_id', $this->kilpailija_id, PDO::PARAM_STR);
+		$query->bindValue(':kilpailija_id', $this->kilpailija_id, PDO::PARAM_INT);
 		$query->bindValue(':etunimi', $this->etunimi, PDO::PARAM_STR);
 		$query->bindValue(':sukunimi', $this->sukunimi, PDO::PARAM_STR);
 		$query->bindValue(':kayttajatunnus', $this->kayttajatunnus, PDO::PARAM_STR);

@@ -63,9 +63,9 @@ class Kilpailu extends BaseModel{
 			paikka = :paikka
 			WHERE kilpailu_id = :kilpailu_id');
 
-		$query->bindParam(':kilpailu_id', $this->kilpailu_id, PDO::PARAM_STR);
+		$query->bindParam(':kilpailu_id', $this->kilpailu_id, PDO::PARAM_INT);
 		$query->bindParam(':pvm', $this->pvm, PDO::PARAM_STR);
-		$query->bindParam('paikka', $this->paikka, PDO::PARAM_STR);
+		$query->bindParam(':paikka', $this->paikka, PDO::PARAM_STR);
 		
 		$query->execute();
 	}

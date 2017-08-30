@@ -73,6 +73,10 @@
     KilpailuController::update($id);
   });
 
+   $routes->post('/kilpailu/:id/delete', function($id){
+    KilpailuController::delete($id);
+  });
+
   //Rasti
 
   $routes->get('/rasti', function(){
@@ -99,7 +103,9 @@
     RastiController::update($id);
   });
 
-
+   $routes->post('/rasti/:id/delete', function($id){
+    RastiController::delete($id);
+  });
 
 
 

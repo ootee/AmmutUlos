@@ -5,7 +5,7 @@ class Rasti extends BaseModel{
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		$this->validators = array('validate_pakollinen');
+		$this->validators = array('validate_pakollinen', 'validate_max_pituus', 'validate_kokonaisluku', 'validate_kokokaisluvun_pituus');
 	}
 
 	public static function all(){
@@ -83,19 +83,54 @@ class Rasti extends BaseModel{
 			taululkm = :taululkm
 			WHERE rasti_id = :rasti_id');
 
-		$query->bindValue(':rasti_id', $this->rasti_id, PDO::PARAM_STR);
-		$query->bindValue(':rastinro', $this->rastinro, PDO::PARAM_STR);
+		$query->bindValue(':rasti_id', $this->rasti_id, PDO::PARAM_INT);
+		$query->bindValue(':rastinro', $this->rastinro, PDO::PARAM_INT);
 		$query->bindValue(':kuvaus', $this->kuvaus, PDO::PARAM_STR);
-		$query->bindValue(':taululkm', $this->taululkm, PDO::PARAM_STR);
+		$query->bindValue(':taululkm', $this->taululkm, PDO::PARAM_INT);
 		
 		$query->execute();
 	}
 
+	public function delete(){
+		$query = DB::connection()->prepare('DELETE FROM Rasti WHERE rasti_id = :rasti_id');
+
+		$query->execute(array('rasti_id' => $this->rasti_id));
+	}
+
 	public function validate_pakollinen(){
 		$errors = array();
+		
 		$errors[] = parent::validate_required($this->rastinro, 'Rastin numero');
 		$errors[] = parent::validate_required($this->kuvaus, 'Kuvaus');
 		$errors[] = parent::validate_required($this->taululkm, 'Taulujen lukumäärä');
+
+		return $errors;
+	}
+
+	public function validate_kokonaisluku(){
+		$errors = array();
+
+		$errors[] = parent::validate_integer($this->rastinro, 'Rastin numero');
+		$errors[] = parent::validate_integer($this->taululkm, 'Taulujen lukumäärä');
+
+		return $errors;
+	}
+
+	public function validate_max_pituus(){
+		$errors = array();
+
+		$errors[] = parent::validate_max_length($this->kuvaus, 'Kuvaus', 100);
+		$errors[] = parent::validate_max_length($this->rastinro, 'Rastin numero', 2);
+		$errors[] = parent::validate_max_length($this->taululkm, 'Taulujen lukumäärä', 2);
+
+		return $errors;
+	}
+
+	public function validate_kokokaisluvun_pituus(){
+		$errors = array();
+
+		$errors[] = parent::validate_integer_input($this->rastinro, 'Rastin numero');
+		$errors[] = parent::validate_integer_input($this->taululkm, 'Taulujen lukumäärä');
 
 		return $errors;
 	}

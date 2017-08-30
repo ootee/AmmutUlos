@@ -65,6 +65,14 @@ class RastiController extends BaseController{
 		}else{
 			View::make('rasti/edit.html', array('errors' => $errors, 'attributes' => $attributes));
 		}
+	}
 
+	public static function delete($id){
+		self::check_logged_in();
+
+		$rasti = new Rasti(array('rasti_id' => $id));
+		$rasti->delete();
+
+		Redirect::to('/rasti', array('message' => 'Rasti on poistettu!'));
 	}
 }

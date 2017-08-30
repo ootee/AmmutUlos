@@ -21,7 +21,7 @@
   {% elseif user_logged_in.usergroup == 'superuser' %}
   {{forms.add_button("#{base_path}/rasti/add/#{kilpailu_id}", "Lisää rasti")}}
   {{forms.edit_button("#{base_path}/kilpailu/#{kilpailu_id}/edit")}}
-  {{forms.delete_button("#{base_path}/kilpailu/#{kilpailu.kilpailu_id}/delete")}}
+  {{forms.delete_button("#{base_path}/kilpailu/#{kilpailu_id}/delete")}}
 
   {% else %}
   {% endif %}
