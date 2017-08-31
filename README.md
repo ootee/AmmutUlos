@@ -7,17 +7,27 @@ Yleisiä linkkejä:
 
 ## Työn aihe
 
-Tehtävänä on toteuttaa järjestelmä ammuntatulosten kirjaamiseen ja tarkasteluun. Kilpailijat voivat selata kaikki tuloksia. Tuomarit voivat selata ja lisätä tuloksia. Pääkäyttäjä voi selata, lisätä ja poistaa tuloksia.
+Tehtävänä on toteuttaa järjestelmä ammuntakilpailujen kirjaamiseen ja kilpailuun osallistumisten tarkasteluun. Kilpailijat ja tuomarit voivat selata kilpailuja. Pääkäyttäjä voi selata, lisätä ja poistaa tuloksia.
 
 Kilpailut koostuvat rasteista. Jokaisella rastilla voi olla yksi tai useampi taulu. Kilpailijat voivat osallistua yhteen tai useampaan kilpailuun ja kilpailussa voi olla yksi tai useampi kilpailija.
 
 
 Toimintoja:
 
-- tuloksen lisääminen
-- tuloksen tarkastelu
-- tuloksen poistaminen
-- kilpailijan, tuomarin ja pääkäyttäjän kirjautuminen 
+- kilpailijan lisääminen
+- kilpailijan tarkastelu
+- kilpailijan muokkaus
+- kilpailijan poistaminen
+- kilpailun lisääminen
+- kilpailun tarkastelu
+- kilpailun muokkaus
+- kilpailun poistaminen
+- rastin lisääminen
+- rastin tarkastelu
+- rastin muokkaus
+- rastin poistaminen
+- osallistumisen lisääminen
+- kilpailijan, tuomarin ja pääkäyttäjän kirjautuminen
 
 ## Linkit sivusuunnitelmiin
 * [Etusivu](http://otanttu.users.cs.helsinki.fi/ammutulos/)
@@ -32,8 +42,8 @@ Toimintoja:
 
 Sovelluksen käyttäminen ei vaadi kirjautumista, mutta voit halutessasi voit käyttää seuraavia tunnuksia:
 
-Tunnus  |Salasana|Käyttöoikeudet
---------|--------|---------------
-testi|testi|pääkäyttäjä
-tuomari|tuomari|tuomari
+Tunnus    |Salasana  |Käyttöoikeudet
+----------|----------|---------------
+testi     |testi     |pääkäyttäjä
+tuomari   |tuomari   |tuomari
 kilpailija|kilpailija|peruskäyttäjä
