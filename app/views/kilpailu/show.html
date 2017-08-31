@@ -15,7 +15,6 @@
 <p>
   {% if user_logged_in.usergroup == 'tuomari' %}
   {{forms.add_button("#{base_path}/rasti/add/#{kilpailu_id}", "Lisää rasti")}}
-  {{forms.edit_button("#{base_path}/kilpailu/#{kilpailu_id}/edit")}}
 
 
   {% elseif user_logged_in.usergroup == 'superuser' %}

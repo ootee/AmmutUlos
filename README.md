@@ -30,4 +30,10 @@ Toimintoja:
 
 ## Testitunnukset
 
-Sovelluksen käyttäminen ei vaadi kirjautumista, mutta voit halutessasi voit käyttää esim. tunnusta 'testi' ja salasanaa 'testi'.
+Sovelluksen käyttäminen ei vaadi kirjautumista, mutta voit halutessasi voit käyttää seuraavia tunnuksia:
+
+Tunnus  |Salasana|Käyttöoikeudet
+--------|--------|---------------
+testi|testi|pääkäyttäjä
+tuomari|tuomari|tuomari
+kilpailija|kilpailija|peruskäyttäjä

@@ -1,6 +1,6 @@
-INSERT INTO Kilpailija (etunimi, sukunimi, kayttajatunnus, salasana, usergroup) VALUES ('Testi', 'Käyttäjä', 'testi', 'testi', 'superuser');
-INSERT INTO Kilpailija (etunimi, sukunimi, kayttajatunnus, salasana, usergroup) VALUES ('Hamish', 'Craigmile', 'hcraigmile0', 'XvZNiUReNv', null);
-INSERT INTO Kilpailija (etunimi, sukunimi, kayttajatunnus, salasana, usergroup) VALUES ('Cornell', 'Horsefield', 'chorsefield1', 'LjLMnlzIc', null);
+INSERT INTO Kilpailija (etunimi, sukunimi, kayttajatunnus, salasana, usergroup) VALUES ('Testi', 'Superkäyttäjä', 'testi', 'testi', 'superuser');
+INSERT INTO Kilpailija (etunimi, sukunimi, kayttajatunnus, salasana, usergroup) VALUES ('Testi', 'Tuomari', 'tuomari', 'tuomari', 'tuomari');
+INSERT INTO Kilpailija (etunimi, sukunimi, kayttajatunnus, salasana, usergroup) VALUES ('Testi', 'Kilpailija', 'kilpailija', 'kilpailija', null);
 INSERT INTO Kilpailija (etunimi, sukunimi, kayttajatunnus, salasana, usergroup) VALUES ('Noll', 'Ovendon', 'novendon2', 'HgxWRu9wGab', 'tuomari');
 INSERT INTO Kilpailija (etunimi, sukunimi, kayttajatunnus, salasana, usergroup) VALUES ('Abbye', 'Renzini', 'arenzini3', 'sCmswLvc', 'superuser');
 INSERT INTO Kilpailija (etunimi, sukunimi, kayttajatunnus, salasana, usergroup) VALUES ('Dayna', 'Critchley', 'dcritchley4', 'jg6qiTuF', 'superuser');

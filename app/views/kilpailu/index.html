@@ -13,10 +13,7 @@
 {% endif %}
 
 <p>
-  {% if user_logged_in.usergroup == 'tuomari' %}
-  {{forms.add_button("#{base_path}/kilpailu/add", "Lisää kilpailu")}}
-
-  {% elseif user_logged_in.usergroup == 'superuser' %}
+  {% if user_logged_in.usergroup == 'superuser' %}
   {{forms.add_button("#{base_path}/kilpailu/add", "Lisää kilpailu")}}
 
   {% else %}
