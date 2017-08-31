@@ -23,7 +23,7 @@ class Kilpailija extends BaseModel{
 				'kayttajatunnus' => $row['kayttajatunnus'],
 				'salasana' => $row['salasana'],
 				'usergroup' => $row['usergroup']
-			));
+				));
 
 		}
 		
@@ -43,7 +43,7 @@ class Kilpailija extends BaseModel{
 				'kayttajatunnus' => $row['kayttajatunnus'],
 				'salasana' => $row['salasana'],
 				'usergroup' => $row['usergroup']
-			));
+				));
 
 			return $kilpailija;
 		}

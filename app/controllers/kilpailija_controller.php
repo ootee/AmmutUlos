@@ -1,6 +1,7 @@
 <?php
 
 class KilpailijaController extends BaseController{
+	
 	public static function index(){
 
 		$kilpailijat = Kilpailija::all();

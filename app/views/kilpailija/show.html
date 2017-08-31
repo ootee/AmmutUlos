@@ -52,19 +52,29 @@
       <th>Kilpailun tunnus</th>
       <th>Päivämäärä</th>
       <th>Paikka</th>
-      <th>Kilpailijoita</th>
     </tr>
   </thead>
 
   <h2>Osallistutut kilpailut</h2>
-  
+
+  <p>
+  {% if user_logged_in.usergroup == 'tuomari' %}
+  {{forms.add_button("#{base_path}/kilpailija/#{kilpailija.kilpailija_id}/osallistu", "Lisää osallistuminen")}}
+
+
+  {% elseif user_logged_in.usergroup == 'superuser' %}
+  {{forms.add_button("#{base_path}/kilpailija/#{kilpailija.kilpailija_id}/osallistu", "Lisää osallistuminen")}}
+
+  {% else %}
+  {% endif %}
+  </p>
+
   <tbody>
     {% for osallistuminen in osallistumiset %}
     <tr>
       <td width="10%"><a href="{{base_path}}/kilpailu/{{osallistuminen.kilpailu}}">{{osallistuminen.kilpailu}}</a></td>
       <td>{{osallistuminen.pvm}}</td>
       <td>{{osallistuminen.paikka}}</td>
-      <td>{{osallistuminen.kilpailijalkm}}</td>
     </tr>
     {% endfor %}
   </tbody> 

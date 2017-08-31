@@ -70,7 +70,7 @@ class Kilpailu extends BaseModel{
 		$query->execute();
 	}
 
-	public function delete(){
+		public function delete(){
 		$query = DB::connection()->prepare('DELETE FROM Kilpailu WHERE kilpailu_id = :kilpailu_id');
 
 		$query->execute(array('kilpailu_id' => $this->kilpailu_id));

@@ -24,4 +24,18 @@ class Osallistuminen extends BaseModel{
 
 		return $osallistumiset;
 	}
+
+	public function save(){
+		$query = DB::connection()->prepare('INSERT INTO Osallistuminen 
+			(kilpailija, kilpailu) 
+			VALUES 
+			(:kilpailija, :kilpailu)
+			');
+		
+		$query->bindValue(':kilpailija', $this->kilpailija, PDO::PARAM_STR);
+		$query->bindValue(':kilpailu', $this->kilpailu, PDO::PARAM_STR);
+
+		$query->execute();
+	}
+
 }

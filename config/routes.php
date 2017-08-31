@@ -30,6 +30,14 @@
     KilpailijaController::add();
   });
 
+  $routes->get('/kilpailija/:id/osallistu', function($id){
+    OsallistuminenController::add($id);
+  });
+
+   $routes->post('/kilpailija/osallistuminen', function(){
+    OsallistuminenController::store();
+  });
+
   $routes->get('/kilpailija/:id', function($id){
     KilpailijaController::show($id);
   });
